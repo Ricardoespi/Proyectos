@@ -1,0 +1,7 @@
+# Programa para inventario de productos de la casa(con un historial de ventas diario)
+
+Puedo hacer una app en la que empiece tan solo permitiendo agregar y quitar productos, 
+luego puedo poner estos mismos productos dentro de una DB, y ver como puedo hacer un 
+historial de lo que se vende cada dia. También puedo implementarle una funcionalidad
+de cuanto capital cuanta ganancia y cuanto se pierde, como un manager de gastos
+o algo por el estilo
