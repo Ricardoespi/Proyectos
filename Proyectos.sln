@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cronómetro", "Cronómetro\Cronómetro.csproj", "{FB0D06F7-D452-4BB1-BB0A-97FCBCF56AA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temporizador", "Temporizador\Temporizador.csproj", "{C6D7035A-EBB9-45A8-A2E1-66BA48B2F1D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTechNikalDice", "AppTechNikalDice\AppTechNikalDice.csproj", "{4D1647AE-B3F1-4282-8003-9E555EFA6A5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculadora", "Calculadora\Calculadora.csproj", "{0439CAC4-86A9-4187-B825-EA45495A6CC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculadora(2)", "Calculadora(2)\Calculadora(2).csproj", "{FFD22DDA-CB8B-42A3-BA4A-2FCC2E3A1A28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalClock", "DigitalClock\DigitalClock.csproj", "{00609DA0-CF0B-4095-940C-C4E5020155A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB0D06F7-D452-4BB1-BB0A-97FCBCF56AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB0D06F7-D452-4BB1-BB0A-97FCBCF56AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB0D06F7-D452-4BB1-BB0A-97FCBCF56AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB0D06F7-D452-4BB1-BB0A-97FCBCF56AA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D7035A-EBB9-45A8-A2E1-66BA48B2F1D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D7035A-EBB9-45A8-A2E1-66BA48B2F1D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D7035A-EBB9-45A8-A2E1-66BA48B2F1D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D7035A-EBB9-45A8-A2E1-66BA48B2F1D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1647AE-B3F1-4282-8003-9E555EFA6A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1647AE-B3F1-4282-8003-9E555EFA6A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1647AE-B3F1-4282-8003-9E555EFA6A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1647AE-B3F1-4282-8003-9E555EFA6A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0439CAC4-86A9-4187-B825-EA45495A6CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0439CAC4-86A9-4187-B825-EA45495A6CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0439CAC4-86A9-4187-B825-EA45495A6CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0439CAC4-86A9-4187-B825-EA45495A6CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFD22DDA-CB8B-42A3-BA4A-2FCC2E3A1A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD22DDA-CB8B-42A3-BA4A-2FCC2E3A1A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD22DDA-CB8B-42A3-BA4A-2FCC2E3A1A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD22DDA-CB8B-42A3-BA4A-2FCC2E3A1A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00609DA0-CF0B-4095-940C-C4E5020155A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00609DA0-CF0B-4095-940C-C4E5020155A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00609DA0-CF0B-4095-940C-C4E5020155A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00609DA0-CF0B-4095-940C-C4E5020155A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53E2FF3F-1F69-45FE-9CFD-2C74B85B8AB0}
+	EndGlobalSection
+EndGlobal
