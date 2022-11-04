@@ -1,6 +1,6 @@
 ﻿namespace LilypadsPersonajes
 {
-    partial class Form1
+    partial class frmPersonajes
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,7 @@
             this.pbxPersonajes = new System.Windows.Forms.PictureBox();
             this.lblNombrePersonaje = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
+            this.btnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonajes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPersonajes)).BeginInit();
             this.SuspendLayout();
@@ -42,7 +43,7 @@
             this.dgvPersonajes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonajes.Location = new System.Drawing.Point(12, 12);
             this.dgvPersonajes.Name = "dgvPersonajes";
-            this.dgvPersonajes.Size = new System.Drawing.Size(106, 86);
+            this.dgvPersonajes.Size = new System.Drawing.Size(156, 318);
             this.dgvPersonajes.TabIndex = 0;
             this.dgvPersonajes.SelectionChanged += new System.EventHandler(this.dgvPersonajes_SelectionChanged);
             // 
@@ -72,18 +73,29 @@
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(305, 358);
             this.lblDescripcion.TabIndex = 3;
-            this.lblDescripcion.Text = "label1";
+            this.lblDescripcion.Text = "Descripcion.";
             // 
-            // Form1
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(12, 361);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // frmPersonajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 450);
+            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblNombrePersonaje);
             this.Controls.Add(this.pbxPersonajes);
             this.Controls.Add(this.dgvPersonajes);
-            this.Name = "Form1";
+            this.Name = "frmPersonajes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personajes";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -99,6 +111,7 @@
         private System.Windows.Forms.PictureBox pbxPersonajes;
         private System.Windows.Forms.Label lblNombrePersonaje;
         private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LilypadsPersonajes
+namespace dominioLily
 {
-    internal class Personaje
+    public class Personaje
     {
         public string Nombre{ get; set; }
         public string Apodo { get; set; }

@@ -8,13 +8,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dominioLily;
+using negocioLily;
+
 
 namespace LilypadsPersonajes
 {
-    public partial class Form1 : Form
+    public partial class frmPersonajes : Form
     {
         private List<Personaje> listaPersonajes;
-        public Form1()
+        public frmPersonajes()
         {
             InitializeComponent();
         }
@@ -46,6 +49,12 @@ namespace LilypadsPersonajes
             lblDescripcion.Text = string.Format("Este es {0} , es conocido como {1}, es {2}, {3}, {4}, y usa {5} y {6}.",
                 seleccionado.Nombre, seleccionado.Apodo, seleccionado.Sexo, seleccionado.Raza, seleccionado.Clase,
                 seleccionado.Armas, seleccionado.Magia, seleccionado.Historia);
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmNuevoPersonaje nuevo = new frmNuevoPersonaje();
+            nuevo.ShowDialog();
         }
     }
 }

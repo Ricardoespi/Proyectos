@@ -46,18 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmNuevoPersonaje.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmNuevoPersonaje.Designer.cs">
+      <DependentUpon>frmNuevoPersonaje.cs</DependentUpon>
     </Compile>
-    <Compile Include="Personaje.cs" />
-    <Compile Include="PersonajeDatos.cs" />
+    <Compile Include="frmPersonajes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPersonajes.Designer.cs">
+      <DependentUpon>frmPersonajes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmNuevoPersonaje.resx">
+      <DependentUpon>frmNuevoPersonaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPersonajes.resx">
+      <DependentUpon>frmPersonajes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,6 +87,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dominioLily\dominioLily.csproj">
+      <Project>{c7ccbaec-6965-4395-b2d2-494a9971e7a0}</Project>
+      <Name>dominioLily</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\negocioLily\negocioLily.csproj">
+      <Project>{4532bd06-638a-4260-88df-148ed080bfd1}</Project>
+      <Name>negocioLily</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

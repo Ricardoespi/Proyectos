@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalClock", "DigitalCloc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LilypadsPersonajes", "LilypadsPersonajes\LilypadsPersonajes.csproj", "{077C4E08-9882-4125-8252-2FEEB4B1420C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lilypads", "Lilypads", "{AF69E8BA-7E2B-4691-A871-E90FC1485084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominioLily", "dominioLily\dominioLily.csproj", "{C7CCBAEC-6965-4395-B2D2-494A9971E7A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocioLily", "negocioLily\negocioLily.csproj", "{4532BD06-638A-4260-88DF-148ED080BFD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,9 +57,22 @@ Global
 		{077C4E08-9882-4125-8252-2FEEB4B1420C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{077C4E08-9882-4125-8252-2FEEB4B1420C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{077C4E08-9882-4125-8252-2FEEB4B1420C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7CCBAEC-6965-4395-B2D2-494A9971E7A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CCBAEC-6965-4395-B2D2-494A9971E7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CCBAEC-6965-4395-B2D2-494A9971E7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CCBAEC-6965-4395-B2D2-494A9971E7A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4532BD06-638A-4260-88DF-148ED080BFD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4532BD06-638A-4260-88DF-148ED080BFD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4532BD06-638A-4260-88DF-148ED080BFD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4532BD06-638A-4260-88DF-148ED080BFD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{077C4E08-9882-4125-8252-2FEEB4B1420C} = {AF69E8BA-7E2B-4691-A871-E90FC1485084}
+		{C7CCBAEC-6965-4395-B2D2-494A9971E7A0} = {AF69E8BA-7E2B-4691-A871-E90FC1485084}
+		{4532BD06-638A-4260-88DF-148ED080BFD1} = {AF69E8BA-7E2B-4691-A871-E90FC1485084}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53E2FF3F-1F69-45FE-9CFD-2C74B85B8AB0}
