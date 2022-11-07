@@ -24,17 +24,16 @@ namespace LilypadsPersonajes
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+        public void cargar()
+        {
             PersonajeDatos datos = new PersonajeDatos();
             listaPersonajes = datos.listar();
             dgvPersonajes.DataSource = listaPersonajes;
             cargarImagen(listaPersonajes[0].UrlImagen);
-            for (int i = 1; i < 9; i++)
-            {
-                dgvPersonajes.Columns[i].Visible = false;
-            }
-            dgvPersonajes.Columns[0].Visible = true;
+            dgvPersonajes.Columns["UrlImagen"].Visible = false;
         }
-
         private void cargarImagen(string imagen)
         {
             try { pbxPersonajes.Load(imagen); }
@@ -45,16 +44,13 @@ namespace LilypadsPersonajes
         {
             Personaje seleccionado = (Personaje)dgvPersonajes.CurrentRow.DataBoundItem;
             cargarImagen(seleccionado.UrlImagen);
-            lblNombrePersonaje.Text = seleccionado.Nombre;
-            lblDescripcion.Text = string.Format("Este es {0} , es conocido como {1}, es {2}, {3}, {4}, y usa {5} y {6}.",
-                seleccionado.Nombre, seleccionado.Apodo, seleccionado.Sexo, seleccionado.Raza, seleccionado.Clase,
-                seleccionado.Armas, seleccionado.Magia, seleccionado.Historia);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmNuevoPersonaje nuevo = new frmNuevoPersonaje();
             nuevo.ShowDialog();
+            cargar();
         }
     }
 }

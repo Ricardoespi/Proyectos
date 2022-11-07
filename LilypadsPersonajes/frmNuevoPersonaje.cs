@@ -34,9 +34,9 @@ namespace LilypadsPersonajes
                 pj.Nombre = txtbxNombre.Text;
                 pj.Apodo = txtbxApodo.Text;
                 pj.Sexo = txtbxSexo.Text;
-                pj.Raza= txtbxRaza.Text;
+                pj.Raza = (Raza)cboRaza.SelectedItem;
                 pj.Clase = txtbxClase.Text;
-                pj.Armas= txtbxArmas.Text;
+                pj.Arma = (Armas)cboArmas.SelectedItem;
                 pj.Magia = txtbxMagia.Text;
                 pj.Historia= txtbxHistoria.Text;
                 pj.UrlImagen= txtbxUrlImagen.Text;
@@ -45,7 +45,26 @@ namespace LilypadsPersonajes
                 Close();
             }
             catch (Exception ex)
-            {throw ex;}
+            { MessageBox.Show(ex.ToString()); }
+        }
+        
+
+        private void frmNuevoPersonaje_Load(object sender, EventArgs e)
+        {
+            RazaDatos listaRazas = new RazaDatos();
+            cboRaza.DataSource = listaRazas.listar();
+            ArmasDatos listaArmas= new ArmasDatos();
+            cboArmas.DataSource = listaArmas.listar();
+        }
+
+        private void txtbxUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtbxUrlImagen.Text);
+        }
+        private void cargarImagen(string imagen)
+        {
+            try { pbxNuevoPersonaje.Load(imagen); }
+            catch (Exception ex) { pbxNuevoPersonaje.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"); }
         }
     }
 }

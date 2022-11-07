@@ -30,8 +30,6 @@
         {
             this.dgvPersonajes = new System.Windows.Forms.DataGridView();
             this.pbxPersonajes = new System.Windows.Forms.PictureBox();
-            this.lblNombrePersonaje = new System.Windows.Forms.Label();
-            this.lblDescripcion = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonajes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPersonajes)).BeginInit();
@@ -41,9 +39,12 @@
             // 
             this.dgvPersonajes.AllowUserToDeleteRows = false;
             this.dgvPersonajes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPersonajes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPersonajes.Location = new System.Drawing.Point(12, 12);
+            this.dgvPersonajes.MultiSelect = false;
             this.dgvPersonajes.Name = "dgvPersonajes";
-            this.dgvPersonajes.Size = new System.Drawing.Size(156, 318);
+            this.dgvPersonajes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPersonajes.Size = new System.Drawing.Size(725, 343);
             this.dgvPersonajes.TabIndex = 0;
             this.dgvPersonajes.SelectionChanged += new System.EventHandler(this.dgvPersonajes_SelectionChanged);
             // 
@@ -55,25 +56,6 @@
             this.pbxPersonajes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxPersonajes.TabIndex = 1;
             this.pbxPersonajes.TabStop = false;
-            // 
-            // lblNombrePersonaje
-            // 
-            this.lblNombrePersonaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 35.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombrePersonaje.Location = new System.Drawing.Point(434, 9);
-            this.lblNombrePersonaje.Name = "lblNombrePersonaje";
-            this.lblNombrePersonaje.Size = new System.Drawing.Size(303, 57);
-            this.lblNombrePersonaje.TabIndex = 2;
-            this.lblNombrePersonaje.Text = "Nombre";
-            this.lblNombrePersonaje.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblDescripcion
-            // 
-            this.lblDescripcion.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcion.Location = new System.Drawing.Point(432, 80);
-            this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(305, 358);
-            this.lblDescripcion.TabIndex = 3;
-            this.lblDescripcion.Text = "Descripcion.";
             // 
             // btnAgregar
             // 
@@ -91,8 +73,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 450);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.lblDescripcion);
-            this.Controls.Add(this.lblNombrePersonaje);
             this.Controls.Add(this.pbxPersonajes);
             this.Controls.Add(this.dgvPersonajes);
             this.Name = "frmPersonajes";
@@ -109,8 +89,6 @@
 
         private System.Windows.Forms.DataGridView dgvPersonajes;
         private System.Windows.Forms.PictureBox pbxPersonajes;
-        private System.Windows.Forms.Label lblNombrePersonaje;
-        private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Button btnAgregar;
     }
 }

@@ -33,6 +33,15 @@ namespace negocioLily
             catch (Exception ex)
             {throw ex;}
         }
+        public void setParametro(string nombre, object valor)
+        {
+            try
+            {
+                comando.Parameters.AddWithValue(nombre, valor);
+            }
+            catch (Exception ex)
+            { throw ex; }
+        }
         public void ejecutarLectura()
         {
             try

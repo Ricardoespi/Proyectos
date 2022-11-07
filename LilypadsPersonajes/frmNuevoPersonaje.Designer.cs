@@ -40,21 +40,23 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtbxApodo = new System.Windows.Forms.TextBox();
             this.txtbxSexo = new System.Windows.Forms.TextBox();
-            this.txtbxRaza = new System.Windows.Forms.TextBox();
             this.txtbxClase = new System.Windows.Forms.TextBox();
             this.txtbxUrlImagen = new System.Windows.Forms.TextBox();
             this.txtbxHistoria = new System.Windows.Forms.TextBox();
             this.txtbxMagia = new System.Windows.Forms.TextBox();
-            this.txtbxArmas = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cboRaza = new System.Windows.Forms.ComboBox();
+            this.cboArmas = new System.Windows.Forms.ComboBox();
+            this.pbxNuevoPersonaje = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNuevoPersonaje)).BeginInit();
             this.SuspendLayout();
             // 
             // txtbxNombre
             // 
             this.txtbxNombre.Location = new System.Drawing.Point(91, 21);
             this.txtbxNombre.Name = "txtbxNombre";
-            this.txtbxNombre.Size = new System.Drawing.Size(234, 20);
+            this.txtbxNombre.Size = new System.Drawing.Size(218, 20);
             this.txtbxNombre.TabIndex = 0;
             // 
             // label1
@@ -96,7 +98,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 129);
+            this.label5.Location = new System.Drawing.Point(50, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 5;
@@ -105,7 +107,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(47, 155);
+            this.label6.Location = new System.Drawing.Point(46, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 13);
             this.label6.TabIndex = 6;
@@ -114,7 +116,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 181);
+            this.label7.Location = new System.Drawing.Point(46, 183);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 13);
             this.label7.TabIndex = 7;
@@ -123,7 +125,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(40, 207);
+            this.label8.Location = new System.Drawing.Point(40, 209);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 8;
@@ -132,7 +134,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 233);
+            this.label9.Location = new System.Drawing.Point(27, 235);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 13);
             this.label9.TabIndex = 9;
@@ -142,7 +144,7 @@
             // 
             this.txtbxApodo.Location = new System.Drawing.Point(91, 48);
             this.txtbxApodo.Name = "txtbxApodo";
-            this.txtbxApodo.Size = new System.Drawing.Size(234, 20);
+            this.txtbxApodo.Size = new System.Drawing.Size(218, 20);
             this.txtbxApodo.TabIndex = 10;
             // 
             // txtbxSexo
@@ -152,51 +154,38 @@
             this.txtbxSexo.Size = new System.Drawing.Size(100, 20);
             this.txtbxSexo.TabIndex = 11;
             // 
-            // txtbxRaza
-            // 
-            this.txtbxRaza.Location = new System.Drawing.Point(91, 100);
-            this.txtbxRaza.Name = "txtbxRaza";
-            this.txtbxRaza.Size = new System.Drawing.Size(234, 20);
-            this.txtbxRaza.TabIndex = 12;
-            // 
             // txtbxClase
             // 
-            this.txtbxClase.Location = new System.Drawing.Point(91, 126);
+            this.txtbxClase.Location = new System.Drawing.Point(91, 127);
             this.txtbxClase.Name = "txtbxClase";
-            this.txtbxClase.Size = new System.Drawing.Size(234, 20);
+            this.txtbxClase.Size = new System.Drawing.Size(218, 20);
             this.txtbxClase.TabIndex = 13;
             // 
             // txtbxUrlImagen
             // 
-            this.txtbxUrlImagen.Location = new System.Drawing.Point(91, 230);
+            this.txtbxUrlImagen.Location = new System.Drawing.Point(91, 232);
             this.txtbxUrlImagen.Name = "txtbxUrlImagen";
-            this.txtbxUrlImagen.Size = new System.Drawing.Size(234, 20);
+            this.txtbxUrlImagen.Size = new System.Drawing.Size(218, 20);
             this.txtbxUrlImagen.TabIndex = 17;
+            this.txtbxUrlImagen.Leave += new System.EventHandler(this.txtbxUrlImagen_Leave);
             // 
             // txtbxHistoria
             // 
-            this.txtbxHistoria.Location = new System.Drawing.Point(91, 204);
+            this.txtbxHistoria.Location = new System.Drawing.Point(91, 206);
             this.txtbxHistoria.Name = "txtbxHistoria";
-            this.txtbxHistoria.Size = new System.Drawing.Size(234, 20);
+            this.txtbxHistoria.Size = new System.Drawing.Size(218, 20);
             this.txtbxHistoria.TabIndex = 16;
             // 
             // txtbxMagia
             // 
-            this.txtbxMagia.Location = new System.Drawing.Point(91, 178);
+            this.txtbxMagia.Location = new System.Drawing.Point(91, 180);
             this.txtbxMagia.Name = "txtbxMagia";
-            this.txtbxMagia.Size = new System.Drawing.Size(234, 20);
+            this.txtbxMagia.Size = new System.Drawing.Size(218, 20);
             this.txtbxMagia.TabIndex = 15;
-            // 
-            // txtbxArmas
-            // 
-            this.txtbxArmas.Location = new System.Drawing.Point(91, 152);
-            this.txtbxArmas.Name = "txtbxArmas";
-            this.txtbxArmas.Size = new System.Drawing.Size(234, 20);
-            this.txtbxArmas.TabIndex = 14;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(53, 266);
+            this.btnAgregar.Location = new System.Drawing.Point(53, 325);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 18;
@@ -206,7 +195,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(234, 266);
+            this.btnCancelar.Location = new System.Drawing.Point(234, 325);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 19;
@@ -214,19 +203,46 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cboRaza
+            // 
+            this.cboRaza.FormattingEnabled = true;
+            this.cboRaza.Location = new System.Drawing.Point(91, 100);
+            this.cboRaza.Name = "cboRaza";
+            this.cboRaza.Size = new System.Drawing.Size(184, 21);
+            this.cboRaza.TabIndex = 20;
+            // 
+            // cboArmas
+            // 
+            this.cboArmas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboArmas.FormattingEnabled = true;
+            this.cboArmas.Location = new System.Drawing.Point(91, 153);
+            this.cboArmas.Name = "cboArmas";
+            this.cboArmas.Size = new System.Drawing.Size(138, 21);
+            this.cboArmas.TabIndex = 21;
+            // 
+            // pbxNuevoPersonaje
+            // 
+            this.pbxNuevoPersonaje.Location = new System.Drawing.Point(340, 21);
+            this.pbxNuevoPersonaje.Name = "pbxNuevoPersonaje";
+            this.pbxNuevoPersonaje.Size = new System.Drawing.Size(257, 327);
+            this.pbxNuevoPersonaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxNuevoPersonaje.TabIndex = 23;
+            this.pbxNuevoPersonaje.TabStop = false;
+            // 
             // frmNuevoPersonaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 315);
+            this.ClientSize = new System.Drawing.Size(609, 360);
+            this.Controls.Add(this.pbxNuevoPersonaje);
+            this.Controls.Add(this.cboArmas);
+            this.Controls.Add(this.cboRaza);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtbxUrlImagen);
             this.Controls.Add(this.txtbxHistoria);
             this.Controls.Add(this.txtbxMagia);
-            this.Controls.Add(this.txtbxArmas);
             this.Controls.Add(this.txtbxClase);
-            this.Controls.Add(this.txtbxRaza);
             this.Controls.Add(this.txtbxSexo);
             this.Controls.Add(this.txtbxApodo);
             this.Controls.Add(this.label9);
@@ -242,6 +258,8 @@
             this.Name = "frmNuevoPersonaje";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Personaje";
+            this.Load += new System.EventHandler(this.frmNuevoPersonaje_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNuevoPersonaje)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,13 +279,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtbxApodo;
         private System.Windows.Forms.TextBox txtbxSexo;
-        private System.Windows.Forms.TextBox txtbxRaza;
         private System.Windows.Forms.TextBox txtbxClase;
         private System.Windows.Forms.TextBox txtbxUrlImagen;
         private System.Windows.Forms.TextBox txtbxHistoria;
         private System.Windows.Forms.TextBox txtbxMagia;
-        private System.Windows.Forms.TextBox txtbxArmas;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ComboBox cboRaza;
+        private System.Windows.Forms.ComboBox cboArmas;
+        private System.Windows.Forms.PictureBox pbxNuevoPersonaje;
     }
 }
