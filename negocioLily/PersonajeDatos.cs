@@ -19,12 +19,13 @@ namespace negocioLily
 
 			try
 			{
-				datos.setQuery("select p.Nombre, p.Apodo, p.Sexo, r.Nombre Raza, p.Clase, a.Nombre Armas, p.Magia, p.Historia, p.UrlImagen from personajes p, armas a, razas r where a.IdArmas  = p.IdArmas and p.IdRaza = r.IdRaza;");
+				datos.setQuery("select p.Nombre, p.Apodo, p.Sexo, r.Nombre Raza, p.Clase, a.Nombre Armas, p.Magia, p.Historia, p.UrlImagen, p.Id from personajes p, armas a, razas r where a.IdArmas  = p.IdArmas and p.IdRaza = r.IdRaza;");
 				datos.ejecutarLectura();
 
 				while (datos.Lector.Read())
 				{
 					Personaje aux = new Personaje();
+					aux.Id = (int)datos.Lector["Id"];
 					aux.Nombre = (string)datos.Lector["Nombre"];
 					aux.Apodo = (string)datos.Lector["Apodo"];
 					aux.Sexo = (string)datos.Lector["Sexo"];

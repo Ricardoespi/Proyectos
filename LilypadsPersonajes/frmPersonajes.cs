@@ -33,6 +33,7 @@ namespace LilypadsPersonajes
             dgvPersonajes.DataSource = listaPersonajes;
             cargarImagen(listaPersonajes[0].UrlImagen);
             dgvPersonajes.Columns["UrlImagen"].Visible = false;
+            dgvPersonajes.Columns["Id"].Visible = false;
         }
         private void cargarImagen(string imagen)
         {

@@ -145,28 +145,28 @@
             this.txtbxApodo.Location = new System.Drawing.Point(91, 48);
             this.txtbxApodo.Name = "txtbxApodo";
             this.txtbxApodo.Size = new System.Drawing.Size(218, 20);
-            this.txtbxApodo.TabIndex = 10;
+            this.txtbxApodo.TabIndex = 1;
             // 
             // txtbxSexo
             // 
             this.txtbxSexo.Location = new System.Drawing.Point(91, 74);
             this.txtbxSexo.Name = "txtbxSexo";
             this.txtbxSexo.Size = new System.Drawing.Size(100, 20);
-            this.txtbxSexo.TabIndex = 11;
+            this.txtbxSexo.TabIndex = 2;
             // 
             // txtbxClase
             // 
             this.txtbxClase.Location = new System.Drawing.Point(91, 127);
             this.txtbxClase.Name = "txtbxClase";
             this.txtbxClase.Size = new System.Drawing.Size(218, 20);
-            this.txtbxClase.TabIndex = 13;
+            this.txtbxClase.TabIndex = 4;
             // 
             // txtbxUrlImagen
             // 
             this.txtbxUrlImagen.Location = new System.Drawing.Point(91, 232);
             this.txtbxUrlImagen.Name = "txtbxUrlImagen";
             this.txtbxUrlImagen.Size = new System.Drawing.Size(218, 20);
-            this.txtbxUrlImagen.TabIndex = 17;
+            this.txtbxUrlImagen.TabIndex = 8;
             this.txtbxUrlImagen.Leave += new System.EventHandler(this.txtbxUrlImagen_Leave);
             // 
             // txtbxHistoria
@@ -174,21 +174,21 @@
             this.txtbxHistoria.Location = new System.Drawing.Point(91, 206);
             this.txtbxHistoria.Name = "txtbxHistoria";
             this.txtbxHistoria.Size = new System.Drawing.Size(218, 20);
-            this.txtbxHistoria.TabIndex = 16;
+            this.txtbxHistoria.TabIndex = 7;
             // 
             // txtbxMagia
             // 
             this.txtbxMagia.Location = new System.Drawing.Point(91, 180);
             this.txtbxMagia.Name = "txtbxMagia";
             this.txtbxMagia.Size = new System.Drawing.Size(218, 20);
-            this.txtbxMagia.TabIndex = 15;
+            this.txtbxMagia.TabIndex = 6;
             // 
             // btnAgregar
             // 
             this.btnAgregar.Location = new System.Drawing.Point(53, 325);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 18;
+            this.btnAgregar.TabIndex = 9;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -198,18 +198,19 @@
             this.btnCancelar.Location = new System.Drawing.Point(234, 325);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 19;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // cboRaza
             // 
+            this.cboRaza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRaza.FormattingEnabled = true;
             this.cboRaza.Location = new System.Drawing.Point(91, 100);
             this.cboRaza.Name = "cboRaza";
             this.cboRaza.Size = new System.Drawing.Size(184, 21);
-            this.cboRaza.TabIndex = 20;
+            this.cboRaza.TabIndex = 3;
             // 
             // cboArmas
             // 
@@ -218,7 +219,7 @@
             this.cboArmas.Location = new System.Drawing.Point(91, 153);
             this.cboArmas.Name = "cboArmas";
             this.cboArmas.Size = new System.Drawing.Size(138, 21);
-            this.cboArmas.TabIndex = 21;
+            this.cboArmas.TabIndex = 5;
             // 
             // pbxNuevoPersonaje
             // 
