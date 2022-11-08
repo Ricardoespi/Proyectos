@@ -35,13 +35,13 @@ namespace LilypadsPersonajes
                 pj.Apodo = txtbxApodo.Text;
                 pj.Sexo = txtbxSexo.Text;
                 pj.Raza = (Raza)cboRaza.SelectedItem;
-                pj.Clase = txtbxClase.Text;
+                pj.Clase = (Clase)cboClase.SelectedItem;
                 pj.Arma = (Armas)cboArmas.SelectedItem;
                 pj.Magia = txtbxMagia.Text;
                 pj.Historia= txtbxHistoria.Text;
                 pj.UrlImagen= txtbxUrlImagen.Text;
                 negocio.agregar(pj);
-                MessageBox.Show("Agregado Existosamente.");
+                MessageBox.Show("Agregado Exitosamente.");
                 Close();
             }
             catch (Exception ex)
@@ -55,6 +55,8 @@ namespace LilypadsPersonajes
             cboRaza.DataSource = listaRazas.listar();
             ArmasDatos listaArmas= new ArmasDatos();
             cboArmas.DataSource = listaArmas.listar();
+            ClaseConexion listaClases = new ClaseConexion();
+            cboClase.DataSource = listaClases.listar();
         }
 
         private void txtbxUrlImagen_Leave(object sender, EventArgs e)

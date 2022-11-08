@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="ArmasDatos.cs" />
+    <Compile Include="ClaseConexion.cs" />
     <Compile Include="PersonajeDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RazaDatos.cs" />

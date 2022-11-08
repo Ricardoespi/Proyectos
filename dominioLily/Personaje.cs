@@ -15,7 +15,7 @@ namespace dominioLily
         public string Apodo { get; set; }
         public string Sexo { get; set; }
         public Raza Raza { get; set; }
-        public string Clase { get; set; }
+        public Clase Clase { get; set; }
         public Armas Arma { get; set; }
         public string Magia { get; set; }
         [DisplayName("Semblanza")]

@@ -40,7 +40,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtbxApodo = new System.Windows.Forms.TextBox();
             this.txtbxSexo = new System.Windows.Forms.TextBox();
-            this.txtbxClase = new System.Windows.Forms.TextBox();
             this.txtbxUrlImagen = new System.Windows.Forms.TextBox();
             this.txtbxHistoria = new System.Windows.Forms.TextBox();
             this.txtbxMagia = new System.Windows.Forms.TextBox();
@@ -49,6 +48,7 @@
             this.cboRaza = new System.Windows.Forms.ComboBox();
             this.cboArmas = new System.Windows.Forms.ComboBox();
             this.pbxNuevoPersonaje = new System.Windows.Forms.PictureBox();
+            this.cboClase = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNuevoPersonaje)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,13 +154,6 @@
             this.txtbxSexo.Size = new System.Drawing.Size(100, 20);
             this.txtbxSexo.TabIndex = 2;
             // 
-            // txtbxClase
-            // 
-            this.txtbxClase.Location = new System.Drawing.Point(91, 127);
-            this.txtbxClase.Name = "txtbxClase";
-            this.txtbxClase.Size = new System.Drawing.Size(218, 20);
-            this.txtbxClase.TabIndex = 4;
-            // 
             // txtbxUrlImagen
             // 
             this.txtbxUrlImagen.Location = new System.Drawing.Point(91, 232);
@@ -209,7 +202,7 @@
             this.cboRaza.FormattingEnabled = true;
             this.cboRaza.Location = new System.Drawing.Point(91, 100);
             this.cboRaza.Name = "cboRaza";
-            this.cboRaza.Size = new System.Drawing.Size(184, 21);
+            this.cboRaza.Size = new System.Drawing.Size(164, 21);
             this.cboRaza.TabIndex = 3;
             // 
             // cboArmas
@@ -230,11 +223,21 @@
             this.pbxNuevoPersonaje.TabIndex = 23;
             this.pbxNuevoPersonaje.TabStop = false;
             // 
+            // cboClase
+            // 
+            this.cboClase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboClase.FormattingEnabled = true;
+            this.cboClase.Location = new System.Drawing.Point(91, 126);
+            this.cboClase.Name = "cboClase";
+            this.cboClase.Size = new System.Drawing.Size(164, 21);
+            this.cboClase.TabIndex = 24;
+            // 
             // frmNuevoPersonaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 360);
+            this.Controls.Add(this.cboClase);
             this.Controls.Add(this.pbxNuevoPersonaje);
             this.Controls.Add(this.cboArmas);
             this.Controls.Add(this.cboRaza);
@@ -243,7 +246,6 @@
             this.Controls.Add(this.txtbxUrlImagen);
             this.Controls.Add(this.txtbxHistoria);
             this.Controls.Add(this.txtbxMagia);
-            this.Controls.Add(this.txtbxClase);
             this.Controls.Add(this.txtbxSexo);
             this.Controls.Add(this.txtbxApodo);
             this.Controls.Add(this.label9);
@@ -280,7 +282,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtbxApodo;
         private System.Windows.Forms.TextBox txtbxSexo;
-        private System.Windows.Forms.TextBox txtbxClase;
         private System.Windows.Forms.TextBox txtbxUrlImagen;
         private System.Windows.Forms.TextBox txtbxHistoria;
         private System.Windows.Forms.TextBox txtbxMagia;
@@ -289,5 +290,6 @@
         private System.Windows.Forms.ComboBox cboRaza;
         private System.Windows.Forms.ComboBox cboArmas;
         private System.Windows.Forms.PictureBox pbxNuevoPersonaje;
+        private System.Windows.Forms.ComboBox cboClase;
     }
 }

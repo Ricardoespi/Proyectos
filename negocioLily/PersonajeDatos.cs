@@ -19,7 +19,7 @@ namespace negocioLily
 
 			try
 			{
-				datos.setQuery("select p.Nombre, p.Apodo, p.Sexo, r.Nombre Raza, p.Clase, a.Nombre Armas, p.Magia, p.Historia, p.UrlImagen, p.Id from personajes p, armas a, razas r where a.IdArmas  = p.IdArmas and p.IdRaza = r.IdRaza;");
+				datos.setQuery("select p.Id, p.Nombre, p.Apodo, p.Sexo, p.IdRaza, r.Nombre Raza, p.IdClase, c.Nombre Clase, p.IdArmas, a.Nombre Armas, p.Magia, p.Historia, p.UrlImagen from personajes p, armas a, razas r, clases c where a.IdArmas  = p.IdArmas and p.IdRaza = r.IdRaza and p.IdClase = c.IdClase;\r\n");
 				datos.ejecutarLectura();
 
 				while (datos.Lector.Read())
@@ -30,9 +30,13 @@ namespace negocioLily
 					aux.Apodo = (string)datos.Lector["Apodo"];
 					aux.Sexo = (string)datos.Lector["Sexo"];
 					aux.Raza = new Raza();
+					aux.Raza.IdRaza = (int)datos.Lector["IdRaza"];
 					aux.Raza.NombreRaza = (string)datos.Lector["Raza"];
-					aux.Clase = (string)datos.Lector["Clase"];
+					aux.Clase = new Clase();
+					aux.Clase.IdClase = (int)datos.Lector["IdClase"];
+					aux.Clase.NombreClase = (string)datos.Lector["Clase"];
 					aux.Arma = new Armas();
+					aux.Arma.IdArma = (int)datos.Lector["IdArmas"];
 					aux.Arma.NombreArma = (string)datos.Lector["Armas"]; 
 					if (!(datos.Lector["Magia"] is DBNull))
 						aux.Magia = (string)datos.Lector["Magia"];
@@ -55,9 +59,10 @@ namespace negocioLily
 			AccesoDatos datos = new AccesoDatos();
 			try
 			{
-				datos.setQuery(string.Format("insert into personajes values('{0}', '{1}', '{2}', @idRaza, '{3}', @idArma, '{4}', '{5}', '{6}')", nuevo.Nombre, nuevo.Apodo, nuevo.Sexo, nuevo.Clase, nuevo.Magia, nuevo.Historia, nuevo.UrlImagen));
+				datos.setQuery(string.Format("insert into personajes values('{0}', '{1}', '{2}', @idRaza, @idClase, @idArma, '{4}', '{5}', '{6}')", nuevo.Nombre, nuevo.Apodo, nuevo.Sexo, nuevo.Clase, nuevo.Magia, nuevo.Historia, nuevo.UrlImagen));
 				datos.setParametro("@idRaza", nuevo.Raza.IdRaza);
 				datos.setParametro("@idArma", nuevo.Arma.IdArma);
+				datos.setParametro("@idClase", nuevo.Clase.IdClase);
 				datos.ejecutarAccion();
 			}
 			catch (Exception ex)
