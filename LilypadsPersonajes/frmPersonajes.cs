@@ -53,5 +53,13 @@ namespace LilypadsPersonajes
             nuevo.ShowDialog();
             cargar();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Personaje seleccionado = (Personaje)dgvPersonajes.CurrentRow.DataBoundItem;
+            frmNuevoPersonaje mod = new frmNuevoPersonaje(seleccionado);
+            mod.ShowDialog();
+            cargar();
+        }
     }
 }

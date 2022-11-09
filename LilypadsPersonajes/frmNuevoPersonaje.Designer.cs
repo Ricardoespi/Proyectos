@@ -43,7 +43,7 @@
             this.txtbxUrlImagen = new System.Windows.Forms.TextBox();
             this.txtbxHistoria = new System.Windows.Forms.TextBox();
             this.txtbxMagia = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cboRaza = new System.Windows.Forms.ComboBox();
             this.cboArmas = new System.Windows.Forms.ComboBox();
@@ -176,15 +176,15 @@
             this.txtbxMagia.Size = new System.Drawing.Size(218, 20);
             this.txtbxMagia.TabIndex = 6;
             // 
-            // btnAgregar
+            // btnAceptar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(53, 325);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 9;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAceptar.Location = new System.Drawing.Point(53, 325);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 9;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -242,7 +242,7 @@
             this.Controls.Add(this.cboArmas);
             this.Controls.Add(this.cboRaza);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtbxUrlImagen);
             this.Controls.Add(this.txtbxHistoria);
             this.Controls.Add(this.txtbxMagia);
@@ -285,7 +285,7 @@
         private System.Windows.Forms.TextBox txtbxUrlImagen;
         private System.Windows.Forms.TextBox txtbxHistoria;
         private System.Windows.Forms.TextBox txtbxMagia;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cboRaza;
         private System.Windows.Forms.ComboBox cboArmas;
