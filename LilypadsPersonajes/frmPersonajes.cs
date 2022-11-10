@@ -32,6 +32,10 @@ namespace LilypadsPersonajes
             listaPersonajes = datos.listar();
             dgvPersonajes.DataSource = listaPersonajes;
             cargarImagen(listaPersonajes[0].UrlImagen);
+            ocultarColumnas();
+        }
+        private void ocultarColumnas()
+        {
             dgvPersonajes.Columns["UrlImagen"].Visible = false;
             dgvPersonajes.Columns["Id"].Visible = false;
         }
@@ -43,8 +47,11 @@ namespace LilypadsPersonajes
 
         private void dgvPersonajes_SelectionChanged(object sender, EventArgs e)
         {
-            Personaje seleccionado = (Personaje)dgvPersonajes.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagen);
+            if(dgvPersonajes.CurrentRow != null)
+            {
+                Personaje seleccionado = (Personaje)dgvPersonajes.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.UrlImagen);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -84,6 +91,20 @@ namespace LilypadsPersonajes
                     datos.eliminar(seleccionado.Id);
                 cargar();
             }
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            List<Personaje> listaFiltrada;
+            string filtro = txtFiltro.Text;
+            if (txtFiltro.Text != "")
+                listaFiltrada = listaPersonajes.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Apodo.ToUpper().Contains(filtro.ToUpper()));
+            else
+                listaFiltrada = listaPersonajes;
+
+            dgvPersonajes.DataSource = null;
+            dgvPersonajes.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }
