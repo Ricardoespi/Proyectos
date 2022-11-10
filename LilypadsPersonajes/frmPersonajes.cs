@@ -61,5 +61,17 @@ namespace LilypadsPersonajes
             mod.ShowDialog();
             cargar();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Personaje seleccionado;
+            PersonajeDatos datos = new PersonajeDatos();
+            if (DialogResult.Yes == MessageBox.Show("¿Estás seguro de que quieres eliminar esto? No podrás recuperarlo.", "Eliminar Personaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
+            {
+                seleccionado = (Personaje)dgvPersonajes.CurrentRow.DataBoundItem;
+                datos.eliminar(seleccionado.Id);
+                cargar();
+            }
+        }
     }
 }
