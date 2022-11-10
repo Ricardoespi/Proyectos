@@ -64,12 +64,24 @@ namespace LilypadsPersonajes
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            eliminar();
+        }
+
+        private void btnEliminarLogico_Click(object sender, EventArgs e)
+        {
+            eliminar(true);
+        }
+        private void eliminar(bool logico = false)
+        {
             Personaje seleccionado;
             PersonajeDatos datos = new PersonajeDatos();
-            if (DialogResult.Yes == MessageBox.Show("¿Estás seguro de que quieres eliminar esto? No podrás recuperarlo.", "Eliminar Personaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
+            if (DialogResult.Yes == MessageBox.Show("¿Estás seguro de que quieres eliminarlo?", "Eliminar Personaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
             {
                 seleccionado = (Personaje)dgvPersonajes.CurrentRow.DataBoundItem;
-                datos.eliminar(seleccionado.Id);
+                if (logico)
+                    datos.eliminarLogico(seleccionado.Id);
+                else
+                    datos.eliminar(seleccionado.Id);
                 cargar();
             }
         }

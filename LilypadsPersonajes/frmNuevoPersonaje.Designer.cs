@@ -230,7 +230,7 @@
             this.cboClase.Location = new System.Drawing.Point(91, 126);
             this.cboClase.Name = "cboClase";
             this.cboClase.Size = new System.Drawing.Size(164, 21);
-            this.cboClase.TabIndex = 24;
+            this.cboClase.TabIndex = 4;
             // 
             // frmNuevoPersonaje
             // 

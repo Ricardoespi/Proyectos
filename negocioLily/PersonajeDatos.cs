@@ -19,7 +19,7 @@ namespace negocioLily
 
 			try
 			{
-				datos.setQuery("select p.Id, p.Nombre, p.Apodo, p.Sexo, p.IdRaza, r.Nombre Raza, p.IdClase, c.Nombre Clase, p.IdArmas, a.Nombre Armas, p.Magia, p.Historia, p.UrlImagen from personajes p, armas a, razas r, clases c where a.IdArmas  = p.IdArmas and p.IdRaza = r.IdRaza and p.IdClase = c.IdClase;\r\n");
+				datos.setQuery("select p.Id, p.Nombre, p.Apodo, p.Sexo, p.IdRaza, r.Nombre Raza, p.IdClase, c.Nombre Clase, p.IdArmas, a.Nombre Armas, p.Magia, p.Historia, p.UrlImagen from personajes p, armas a, razas r, clases c where a.IdArmas  = p.IdArmas and p.IdRaza = r.IdRaza and p.IdClase = c.IdClase and p.Activo = 1");
 				datos.ejecutarLectura();
 
 				while (datos.Lector.Read())
@@ -59,8 +59,14 @@ namespace negocioLily
 			AccesoDatos datos = new AccesoDatos();
 			try
 			{
-				datos.setQuery(string.Format("insert into personajes values('{0}', '{1}', '{2}', @idRaza, @idClase, @idArma, '{4}', '{5}', '{6}')", nuevo.Nombre, nuevo.Apodo, nuevo.Sexo, nuevo.Clase, nuevo.Magia, nuevo.Historia, nuevo.UrlImagen));
-				datos.setParametro("@idRaza", nuevo.Raza.IdRaza);
+				datos.setQuery("insert into personajes(Nombre, Apodo, Sexo, IdRaza, IdClase, IdArmas, Magia, Historia, UrlImagen) values (@nombre, @apodo, @sexo, @idRaza, @idClase, @idArma, @magia, @historia, @img)");
+				datos.setParametro("@nombre", nuevo.Nombre);
+				datos.setParametro("@apodo", nuevo.Apodo);
+				datos.setParametro("@sexo", nuevo.Sexo);
+				datos.setParametro("@magia", nuevo.Magia);
+				datos.setParametro("@historia", nuevo.Historia);
+				datos.setParametro("@img", nuevo.UrlImagen);
+                datos.setParametro("@idRaza", nuevo.Raza.IdRaza);
 				datos.setParametro("@idArma", nuevo.Arma.IdArma);
 				datos.setParametro("@idClase", nuevo.Clase.IdClase);
 				datos.ejecutarAccion();
@@ -101,6 +107,22 @@ namespace negocioLily
 			try
 			{
 				datos.setQuery("delete from personajes where id = @id");
+				datos.setParametro("@id", id);
+				datos.ejecutarAccion();
+			}
+			catch (Exception ex)
+			{ throw ex; }
+			finally
+			{
+				datos.cerrarConexion();
+			}
+		}
+		public void eliminarLogico(int id)
+		{
+			AccesoDatos datos = new AccesoDatos();
+			try
+			{
+				datos.setQuery("update personajes set Activo = 0 where id = @id");
 				datos.setParametro("@id", id);
 				datos.ejecutarAccion();
 			}
