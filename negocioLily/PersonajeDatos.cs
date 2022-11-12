@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using dominioLily;
 using System.Net;
+using System.Reflection;
 
 namespace negocioLily
 {
@@ -133,5 +134,71 @@ namespace negocioLily
 				datos.cerrarConexion();
 			}
 		}
+
+        public List<Personaje> filtrar(string campo, string criterio, string filtro)
+        {
+			List<Personaje> lista = new List<Personaje>();
+			AccesoDatos datos = new AccesoDatos();
+			try
+			{
+				string consulta = "select p.Id, p.Nombre, p.Apodo, p.Sexo, p.IdRaza, r.Nombre Raza, p.IdClase, c.Nombre Clase, p.IdArmas, a.Nombre Armas, p.Magia, p.Historia, p.UrlImagen from personajes p, armas a, razas r, clases c where a.IdArmas  = p.IdArmas and p.IdRaza = r.IdRaza and p.IdClase = c.IdClase and p.Activo = 1 ";
+				if (campo == "Raza")
+					consulta += "and r.Nombre";
+				else if (campo == "Clase")
+					consulta += "and c.Nombre";
+				else if (campo == "Armas")
+					consulta += "and a.Nombre";
+				else
+					consulta += "and p." + campo;
+				consulta += " like '";
+				switch (criterio)
+				{
+					case "Contiene":
+						consulta += "%" + filtro + "%'";
+						break;
+					case "Empieza con":
+						consulta += filtro + "%'";
+						break;
+					default:
+						consulta += "%" + filtro + "'";
+						break;
+				}
+				datos.setQuery(consulta);
+				datos.ejecutarLectura();
+
+				while (datos.Lector.Read())
+				{
+                    Personaje aux = new Personaje();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Apodo = (string)datos.Lector["Apodo"];
+                    aux.Sexo = (string)datos.Lector["Sexo"];
+                    aux.Raza = new Raza();
+                    aux.Raza.IdRaza = (int)datos.Lector["IdRaza"];
+                    aux.Raza.NombreRaza = (string)datos.Lector["Raza"];
+                    aux.Clase = new Clase();
+                    aux.Clase.IdClase = (int)datos.Lector["IdClase"];
+                    aux.Clase.NombreClase = (string)datos.Lector["Clase"];
+                    aux.Arma = new Armas();
+                    aux.Arma.IdArma = (int)datos.Lector["IdArmas"];
+                    aux.Arma.NombreArma = (string)datos.Lector["Armas"];
+                    if (!(datos.Lector["Magia"] is DBNull))
+                        aux.Magia = (string)datos.Lector["Magia"];
+                    if (!(datos.Lector["Historia"] is DBNull))
+                        aux.Historia = (string)datos.Lector["Historia"];
+                    if (!(datos.Lector["UrlImagen"] is DBNull))
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+                    lista.Add(aux);
+                }
+
+				return lista;
+			}
+			catch (Exception ex)
+			{ throw ex; }
+			finally
+			{
+				datos.cerrarConexion();
+			}
+        }
     }
 }

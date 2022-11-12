@@ -25,6 +25,18 @@ namespace LilypadsPersonajes
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Apodo");
+            cboCampo.Items.Add("Sexo");
+            cboCampo.Items.Add("Raza");
+            cboCampo.Items.Add("Clase");
+            cboCampo.Items.Add("Armas");
+            cboCampo.Items.Add("Magia");
+            cboCriterio.Items.Add("Contiene");
+            cboCriterio.Items.Add("Empieza con");
+            cboCriterio.Items.Add("Termina con");
+
         }
         public void cargar()
         {
@@ -92,8 +104,7 @@ namespace LilypadsPersonajes
                 cargar();
             }
         }
-
-        private void btnFiltro_Click(object sender, EventArgs e)
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Personaje> listaFiltrada;
             string filtro = txtFiltro.Text;
@@ -105,6 +116,24 @@ namespace LilypadsPersonajes
             dgvPersonajes.DataSource = null;
             dgvPersonajes.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void btnFiltroAvanzado_Click(object sender, EventArgs e)
+        {
+            if(cboCriterio.SelectedItem != null)
+            {
+                try
+                {
+                    PersonajeDatos datos = new PersonajeDatos();
+                    string campo = cboCampo.SelectedItem.ToString();
+                    string criterio = cboCriterio.SelectedItem.ToString();
+                    string filtro = txtFiltroAvanzado.Text;
+                    dgvPersonajes.DataSource = datos.filtrar(campo, criterio, filtro);
+                }
+                catch (Exception ex)
+                { MessageBox.Show(ex.ToString()); }
+
+            }
         }
     }
 }

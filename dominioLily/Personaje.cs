@@ -11,7 +11,6 @@ namespace dominioLily
     {
         public int Id { get; set; }
         public string Nombre{ get; set; }
-        [DisplayName("Alias")]
         public string Apodo { get; set; }
         public string Sexo { get; set; }
         public Raza Raza { get; set; }
