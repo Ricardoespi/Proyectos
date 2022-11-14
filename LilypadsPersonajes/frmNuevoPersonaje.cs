@@ -9,13 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
 
 namespace LilypadsPersonajes
 {
     public partial class frmNuevoPersonaje : Form
     {
         private Personaje personaje = null;
+        private OpenFileDialog archivo = null;
         public frmNuevoPersonaje()
         {
             InitializeComponent();
@@ -62,6 +65,8 @@ namespace LilypadsPersonajes
                     negocio.agregar(personaje);
                     MessageBox.Show("Agregado exitosamente.");
                 }
+                if (archivo != null && !(txtbxUrlImagen.Text.Contains("http")))
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["image-folder"] + archivo.SafeFileName);
                 Close();
             }
             catch (Exception ex)
@@ -108,6 +113,16 @@ namespace LilypadsPersonajes
         {
             try { pbxNuevoPersonaje.Load(imagen); }
             catch (Exception ex) { pbxNuevoPersonaje.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"); }
+        }
+
+        private void btnAgregarFoto_Click(object sender, EventArgs e)
+        {
+            archivo.Filter = "jpg|*.jpg|png|*.png";
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtbxUrlImagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+            }
         }
     }
 }

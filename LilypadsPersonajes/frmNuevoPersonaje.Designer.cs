@@ -49,6 +49,7 @@
             this.cboArmas = new System.Windows.Forms.ComboBox();
             this.pbxNuevoPersonaje = new System.Windows.Forms.PictureBox();
             this.cboClase = new System.Windows.Forms.ComboBox();
+            this.btnAgregarFoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNuevoPersonaje)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,7 +159,7 @@
             // 
             this.txtbxUrlImagen.Location = new System.Drawing.Point(91, 232);
             this.txtbxUrlImagen.Name = "txtbxUrlImagen";
-            this.txtbxUrlImagen.Size = new System.Drawing.Size(218, 20);
+            this.txtbxUrlImagen.Size = new System.Drawing.Size(204, 20);
             this.txtbxUrlImagen.TabIndex = 8;
             this.txtbxUrlImagen.Leave += new System.EventHandler(this.txtbxUrlImagen_Leave);
             // 
@@ -216,9 +217,9 @@
             // 
             // pbxNuevoPersonaje
             // 
-            this.pbxNuevoPersonaje.Location = new System.Drawing.Point(340, 21);
+            this.pbxNuevoPersonaje.Location = new System.Drawing.Point(335, 21);
             this.pbxNuevoPersonaje.Name = "pbxNuevoPersonaje";
-            this.pbxNuevoPersonaje.Size = new System.Drawing.Size(257, 327);
+            this.pbxNuevoPersonaje.Size = new System.Drawing.Size(262, 327);
             this.pbxNuevoPersonaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxNuevoPersonaje.TabIndex = 23;
             this.pbxNuevoPersonaje.TabStop = false;
@@ -232,11 +233,22 @@
             this.cboClase.Size = new System.Drawing.Size(164, 21);
             this.cboClase.TabIndex = 4;
             // 
+            // btnAgregarFoto
+            // 
+            this.btnAgregarFoto.Location = new System.Drawing.Point(301, 230);
+            this.btnAgregarFoto.Name = "btnAgregarFoto";
+            this.btnAgregarFoto.Size = new System.Drawing.Size(28, 23);
+            this.btnAgregarFoto.TabIndex = 24;
+            this.btnAgregarFoto.Text = "+";
+            this.btnAgregarFoto.UseVisualStyleBackColor = true;
+            this.btnAgregarFoto.Click += new System.EventHandler(this.btnAgregarFoto_Click);
+            // 
             // frmNuevoPersonaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 360);
+            this.Controls.Add(this.btnAgregarFoto);
             this.Controls.Add(this.cboClase);
             this.Controls.Add(this.pbxNuevoPersonaje);
             this.Controls.Add(this.cboArmas);
@@ -291,5 +303,6 @@
         private System.Windows.Forms.ComboBox cboArmas;
         private System.Windows.Forms.PictureBox pbxNuevoPersonaje;
         private System.Windows.Forms.ComboBox cboClase;
+        private System.Windows.Forms.Button btnAgregarFoto;
     }
 }
