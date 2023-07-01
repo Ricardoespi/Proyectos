@@ -136,7 +136,7 @@
             // agregarDadoToolStripMenuItem
             // 
             this.agregarDadoToolStripMenuItem.Name = "agregarDadoToolStripMenuItem";
-            this.agregarDadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarDadoToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.agregarDadoToolStripMenuItem.Text = "Agregar Dado";
             // 
             // frmPrincipal

@@ -66,7 +66,7 @@ namespace LilypadsPersonajes
                     MessageBox.Show("Agregado exitosamente.");
                 }
                 if (archivo != null && !(txtbxUrlImagen.Text.Contains("http")))
-                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["image-folder"] + archivo.SafeFileName);
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["image-folder"] + archivo.SafeFileName, true);
                 Close();
             }
             catch (Exception ex)
@@ -117,6 +117,8 @@ namespace LilypadsPersonajes
 
         private void btnAgregarFoto_Click(object sender, EventArgs e)
         {
+            if (archivo == null)
+                archivo = new OpenFileDialog();
             archivo.Filter = "jpg|*.jpg|png|*.png";
             if(archivo.ShowDialog() == DialogResult.OK)
             {
