@@ -18,7 +18,7 @@ namespace Trucazo_Console
                 Console.WriteLine(carta.ToString());
             }
             */
-            mazo.Barajar();
+            /*mazo.Barajar();
             Carta Vira = mazo.dar_carta();
             Console.WriteLine(Vira.ToString());
             List<Carta> mano1 = new List<Carta>();
@@ -31,12 +31,27 @@ namespace Trucazo_Console
             mano2.Add(mazo.dar_carta());
             Console.WriteLine("La mano del primer jugador es: ");
             foreach (Carta c in mano1) {
-                Console.WriteLine(c.ToString());
+                Console.WriteLine(c.ToString() + "(" + c.Valor + ")");
             }
             Console.WriteLine("La mano del segundo jugador es: ");
-            foreach (Carta c in mano2) { Console.WriteLine(c.ToString()); }
+            foreach (Carta c in mano2) { Console.WriteLine(c.ToString() + "(" + c.Valor + ")"); }
+            if (mano1[0].Valor > mano2[0].Valor)
+                Console.WriteLine("El primer jugador gana");
+            else if (mano1[0].Valor < mano2[0].Valor)
+                Console.WriteLine("El segundo jugador gana");
+            else
+                Console.WriteLine("Empate");
+            if ((int)Carta.Valores.Tres > (int)mazo.Cartas[4].Valor)
+                Console.WriteLine("El siete de espadas es mayor que un 3");*/
 
+            Juego juego = new Juego();
+            juego.add_player(new Jugador("ricardo"));
+            juego.add_player(new Jugador("Carlitos"));
+            juego.Mazo.Barajar();
+            juego.reparte_cartas();
+            Console.WriteLine();
             Console.ReadKey();
+
 
         }
     }

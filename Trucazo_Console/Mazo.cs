@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trucazo_Console
 {
-    class Mazo
+    public class Mazo
     {
         private int indice_carta_actual;
         public List<Carta> Cartas { get; set; }
