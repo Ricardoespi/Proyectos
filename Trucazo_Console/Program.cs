@@ -49,6 +49,7 @@ namespace Trucazo_Console
             juego.add_player(new Jugador("Ricardo"));
             juego.add_player(new Jugador("Carlitos"));
             juego.Mazo.Barajar();
+            juego.da_la_vira();
             juego.reparte_cartas();
             for (int i = 1; i < 4; i++)
             {

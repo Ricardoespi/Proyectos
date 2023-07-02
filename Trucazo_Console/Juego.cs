@@ -16,6 +16,7 @@ namespace Trucazo_Console
         public Jugador Jugador_actual { get; set; }
         public Mazo Mazo { get; set; }
         public List<Jugador> Jugadores { get; set; }
+        public Carta Vira { get; set; }
         public void add_player(Jugador jugador)
         {
             Jugadores.Add(jugador);
@@ -35,6 +36,11 @@ namespace Trucazo_Console
                 }
             }
         }
+        public void da_la_vira()
+        {
+            Vira = Mazo.dar_carta();
+            Console.WriteLine($"La vira es {Vira.ToString()}");
+        }
         public void jugar_mano()
         {
             // Play a hand
@@ -51,7 +57,21 @@ namespace Trucazo_Console
             }
 
             // Determine the winner of the hand
-            Carta carta_ganadora = determinar_ganador(cartas_jugadas);
+            List<Carta> cartas_ganadoras = determinar_ganadoras(cartas_jugadas);
+            if (cartas_ganadoras.Count == 1)
+            {
+                //There is a single winner
+                Carta carta_ganadora = cartas_ganadoras[0];
+                Jugador ganador = Jugadores.First(j => j.Mano_original.Contains(carta_ganadora));
+                Console.WriteLine($"{ganador.Nombre} gano la mano con {carta_ganadora.ToString()}");
+                //The current player plays first in the next hand
+                Jugador_actual = ganador;
+            }
+            else
+            {
+                Console.WriteLine("Es un empate");
+            }
+            /*Carta carta_ganadora = determinar_ganador(cartas_jugadas);
             Jugador ganador = null;
             foreach (Jugador jugador in Jugadores)
             {
@@ -64,7 +84,7 @@ namespace Trucazo_Console
             Console.WriteLine($"{ganador.Nombre} gano la mano con {carta_ganadora.ToString()}");
 
             // The winner plays first in the next hand
-            Jugador_actual = ganador;
+            Jugador_actual = ganador;*/
             foreach (Jugador jugador in Jugadores)
             {
                 foreach (Carta carta in cartas_jugadas)
@@ -74,11 +94,45 @@ namespace Trucazo_Console
                 }
             }
         }
-        private Carta determinar_ganador(List<Carta> cartas_jugadas)
+        private List<Carta> determinar_ganadoras(List<Carta> cartas_jugadas)
         {
             // Determine the winner of a hand based on the highest card value
-            Carta carta_ganadora = cartas_jugadas.OrderByDescending(c => c.Valor).First();
-            return carta_ganadora;
+            List<Carta> cartas_ganadoras = new List<Carta>();
+            Carta Perico = null;
+            Carta Perica = null;
+            if(Vira.Valor == Carta.Valores.Diez)
+            {
+                Perico = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Once && c.Pinta == Vira.Pinta );
+                Perica = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Doce && c.Pinta == Vira.Pinta );
+            }
+            else if(Vira.Valor == Carta.Valores.Once)
+            {
+                Perico = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Doce && c.Pinta == Vira.Pinta);
+                Perica = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Diez && c.Pinta == Vira.Pinta );
+            }
+            else
+            {
+                Perico = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Once && c.Pinta == Vira.Pinta);
+                Perica = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Diez && c.Pinta == Vira.Pinta);
+            }
+            
+            if (Perico != null)
+                cartas_ganadoras.Add(Perico);
+            else if (Perica != null)
+                cartas_ganadoras.Add(Perica);
+            else
+            {
+                // If no Perico or Perica cards were played, determine winner based on highest value
+                var mayor_valor = cartas_jugadas.Max(c => c.Valor);
+                foreach (Carta carta in cartas_jugadas)
+                {
+                    if(carta.Valor == mayor_valor)
+                        cartas_ganadoras.Add(carta);
+                }
+            }
+            return cartas_ganadoras;
+            //Carta carta_ganadora = cartas_jugadas.OrderByDescending(c => c.Valor).First();
+            //return carta_ganadora;
         }
 
     }
