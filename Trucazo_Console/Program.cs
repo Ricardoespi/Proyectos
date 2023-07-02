@@ -57,16 +57,20 @@ namespace Trucazo_Console
             while (true)
             {
                 juego.reparte_cartas();
-                for (int i = 1; i < 4; i++)
-                {
-                    Console.WriteLine($"Jugando mano {i}");
-                    juego.jugar_mano();
-                }
+                juego.jugar_ronda();
                 if (juego.check_ganador())
                     break;
                 Jugador siguiente_barajador = juego.Jugadores.First(p => p != juego.ultimo_barajador);
                 juego.baraja_mazo(siguiente_barajador);
                 juego.da_la_vira();
+                //for (int i = 1; i < 4; i++)
+                //{
+                //    Console.WriteLine($"Jugando mano {i}");
+                //    juego.jugar_mano();
+                //}
+                //if (juego.check_ganador())
+                //    break;
+                
             }
             Console.ReadKey();
 

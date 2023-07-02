@@ -13,6 +13,7 @@ namespace Trucazo_Console
             Mazo = new Mazo();
             Jugadores = new List<Jugador>();
             Puntaje = new Dictionary<Jugador, int>();
+            manos_ganadas = new Dictionary<Jugador, int>();
         }
         public Jugador Jugador_actual { get; set; }
         public Mazo Mazo { get; set; }
@@ -20,11 +21,13 @@ namespace Trucazo_Console
         public Carta Vira { get; set; }
         public Dictionary<Jugador, int> Puntaje { get; set; }
         public Jugador ultimo_barajador { get; set; }
+        public Dictionary<Jugador, int> manos_ganadas { get; set; }
 
         public void add_player(Jugador jugador)
         {
             Jugadores.Add(jugador);
             Puntaje[jugador] = 0;
+            manos_ganadas[jugador] = 0;
         }
         public void reparte_cartas()
         {
@@ -52,7 +55,34 @@ namespace Trucazo_Console
             ultimo_barajador = barajador;
             Jugador_actual = barajador;
         }
-        public void jugar_mano()
+        public void jugar_ronda()
+        {
+            //Play a round consisting of 3 hands
+            for (int i = 1; i < 4; i++)
+            {
+                Console.WriteLine($"Mano {i}");
+                Jugador ganador = jugar_mano();
+                // Check if a player has won 2 hands and won the round
+                if(ganador != null && manos_ganadas[ganador] >= 2)
+                {
+                    Console.WriteLine($"{ganador.Nombre} ha ganado la ronda!");
+                    actualizar_puntaje(ganador);
+                    break;
+                }
+            }
+            // Reset the number of hands won by each player
+            foreach (Jugador jugador in Jugadores)
+            {
+                manos_ganadas[jugador] = 0;
+            }
+            if (check_ganador())
+            {
+                Jugador ganador = Jugadores.First(p => Puntaje[p] >= 12);
+                Console.WriteLine($"{ganador.Nombre} ha ganado el juego!");
+                return;
+            }
+        }
+        public Jugador jugar_mano()
         {
             // Play a hand
             List<Carta> cartas_jugadas = new List<Carta>();
@@ -79,17 +109,22 @@ namespace Trucazo_Console
                 Jugador ganador = Jugadores.First(j => j.Mano_original.Contains(carta_ganadora));
                 Console.WriteLine($"{ganador.Nombre} gano la mano con {carta_ganadora.ToString()}");
                 //The current player plays first in the next hand
-                actualizar_puntaje(ganador);
-                if (check_ganador())
-                {
-                    Console.WriteLine($"{ganador.Nombre} ha ganado el juego!");
-                    return;
-                }
                 Jugador_actual = ganador;
+                manos_ganadas[ganador]++;
+                foreach (Jugador jugador in Jugadores)
+                {
+                    foreach (Carta carta in cartas_jugadas)
+                    {
+                        if (jugador.Mano_original.Contains(carta))
+                            jugador.Mano_original.Remove(carta);
+                    }
+                }
+                return ganador;
             }
             else
             {
                 Console.WriteLine("Es un empate");
+                return null;
             }
             /*Carta carta_ganadora = determinar_ganador(cartas_jugadas);
             Jugador ganador = null;
@@ -105,14 +140,7 @@ namespace Trucazo_Console
 
             // The winner plays first in the next hand
             Jugador_actual = ganador;*/
-            foreach (Jugador jugador in Jugadores)
-            {
-                foreach (Carta carta in cartas_jugadas)
-                {
-                    if (jugador.Mano_original.Contains(carta)) 
-                        jugador.Mano_original.Remove(carta);
-                }
-            }
+            
         }
         private void actualizar_puntaje(Jugador ganador)
         {
