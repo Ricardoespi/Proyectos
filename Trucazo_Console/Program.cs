@@ -61,8 +61,8 @@ namespace Trucazo_Console
                 if (juego.check_ganador())
                     break;
                 Jugador siguiente_barajador = juego.Jugadores.First(p => p != juego.ultimo_barajador);
-                juego.baraja_mazo(siguiente_barajador);
-                juego.da_la_vira();
+                juego.reset_mazo(siguiente_barajador);
+                //juego.baraja_mazo(siguiente_barajador);
                 //for (int i = 1; i < 4; i++)
                 //{
                 //    Console.WriteLine($"Jugando mano {i}");
@@ -70,9 +70,11 @@ namespace Trucazo_Console
                 //}
                 //if (juego.check_ganador())
                 //    break;
-                
+
             }
-            Console.ReadKey();
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.ReadLine();
 
         }
     }

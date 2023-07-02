@@ -55,10 +55,10 @@ namespace Trucazo_Console
             ultimo_barajador = barajador;
             Jugador_actual = barajador;
         }
-        public void reset_mazo()
+        public void reset_mazo(Jugador barajador)
         {
             Mazo = new Mazo();
-            baraja_mazo(ultimo_barajador);
+            baraja_mazo(barajador);
             da_la_vira();
             foreach (Jugador jugador in Jugadores)
             {
@@ -86,7 +86,7 @@ namespace Trucazo_Console
             {
                 manos_ganadas[jugador] = 0;
             }
-            reset_mazo();
+            
             if (check_ganador())
             {
                 Jugador ganador = Jugadores.First(p => Puntaje[p] >= 12);
@@ -106,6 +106,8 @@ namespace Trucazo_Console
             foreach (Jugador jugador in jugadores_orden)
             {
                 Console.WriteLine(@"Que carta de tu mano quieres jugar {0}?", jugador.Nombre);
+                
+                
                 int n = int.Parse(Console.ReadLine());
                 Carta carta_jugada = jugador.seleccionar_carta(n);
                 cartas_jugadas.Add(carta_jugada);
