@@ -56,9 +56,12 @@ namespace Trucazo_Console
         {
             // Play a hand
             List<Carta> cartas_jugadas = new List<Carta>();
+            // Determine the order of play
+            int indice_jugador_actual = Jugadores.IndexOf(Jugador_actual);
+            IEnumerable<Jugador> jugadores_orden = Jugadores.Skip(indice_jugador_actual).Concat(Jugadores.Take(indice_jugador_actual));
 
             // Each player selects a card to play
-            foreach (Jugador jugador in Jugadores)
+            foreach (Jugador jugador in jugadores_orden)
             {
                 Console.WriteLine(@"Que carta de tu mano quieres jugar {0}?", jugador.Nombre);
                 int n = int.Parse(Console.ReadLine());
