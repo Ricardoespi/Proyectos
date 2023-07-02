@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,11 +46,15 @@ namespace Trucazo_Console
                 Console.WriteLine("El siete de espadas es mayor que un 3");*/
 
             Juego juego = new Juego();
-            juego.add_player(new Jugador("ricardo"));
+            juego.add_player(new Jugador("Ricardo"));
             juego.add_player(new Jugador("Carlitos"));
             juego.Mazo.Barajar();
             juego.reparte_cartas();
-            Console.WriteLine();
+            for (int i = 1; i < 4; i++)
+            {
+                Console.WriteLine($"Jugando mano {i}");
+                juego.jugar_mano();
+            }
             Console.ReadKey();
 
 
