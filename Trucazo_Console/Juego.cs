@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -80,6 +81,19 @@ namespace Trucazo_Console
                     actualizar_puntaje(ganador);
                     break;
                 }
+                // Check if there was a tie in the first hand
+                if (i == 1 && ganador == null)
+                {
+                    // Skip the second hand and go directly to the third hand
+                    Console.WriteLine("Skipping second hand due to tie in first hand");
+                    i++;
+                }
+                //Check if there was a tie in the third hand.
+                if(i == 3 && ganador == null)
+                {
+                    //Retroceder a la segunda mano para ver que carta es mayor.
+
+                }
             }
             // Reset the number of hands won by each player
             foreach (Jugador jugador in Jugadores)
@@ -106,8 +120,6 @@ namespace Trucazo_Console
             foreach (Jugador jugador in jugadores_orden)
             {
                 Console.WriteLine(@"Que carta de tu mano quieres jugar {0}?", jugador.Nombre);
-                
-                
                 int n = int.Parse(Console.ReadLine());
                 Carta carta_jugada = jugador.seleccionar_carta(n);
                 cartas_jugadas.Add(carta_jugada);
