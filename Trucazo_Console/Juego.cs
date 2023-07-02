@@ -12,14 +12,19 @@ namespace Trucazo_Console
         { 
             Mazo = new Mazo();
             Jugadores = new List<Jugador>();
+            Puntaje = new Dictionary<Jugador, int>();
         }
         public Jugador Jugador_actual { get; set; }
         public Mazo Mazo { get; set; }
         public List<Jugador> Jugadores { get; set; }
         public Carta Vira { get; set; }
+        public Dictionary<Jugador, int> Puntaje { get; set; }
+        public Jugador ultimo_barajador { get; set; }
+
         public void add_player(Jugador jugador)
         {
             Jugadores.Add(jugador);
+            Puntaje[jugador] = 0;
         }
         public void reparte_cartas()
         {
@@ -40,6 +45,12 @@ namespace Trucazo_Console
         {
             Vira = Mazo.dar_carta();
             Console.WriteLine($"La vira es {Vira.ToString()}");
+        }
+        public void baraja_mazo(Jugador barajador)
+        {
+            Mazo.Barajar();
+            ultimo_barajador = barajador;
+            Jugador_actual = barajador;
         }
         public void jugar_mano()
         {
@@ -65,6 +76,12 @@ namespace Trucazo_Console
                 Jugador ganador = Jugadores.First(j => j.Mano_original.Contains(carta_ganadora));
                 Console.WriteLine($"{ganador.Nombre} gano la mano con {carta_ganadora.ToString()}");
                 //The current player plays first in the next hand
+                actualizar_puntaje(ganador);
+                if (check_ganador())
+                {
+                    Console.WriteLine($"{ganador.Nombre} ha ganado el juego!");
+                    return;
+                }
                 Jugador_actual = ganador;
             }
             else
@@ -93,6 +110,19 @@ namespace Trucazo_Console
                         jugador.Mano_original.Remove(carta);
                 }
             }
+        }
+        private void actualizar_puntaje(Jugador ganador)
+        {
+            Puntaje[ganador]++;
+        }
+        public bool check_ganador()
+        {
+            foreach (Jugador jugador in Jugadores)
+            {
+                if (Puntaje[jugador] >= 12)
+                    return true;
+            }
+            return false;
         }
         private List<Carta> determinar_ganadoras(List<Carta> cartas_jugadas)
         {

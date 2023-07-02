@@ -9,6 +9,7 @@ namespace Trucazo_Console
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
             Mazo mazo = new Mazo();
@@ -44,20 +45,30 @@ namespace Trucazo_Console
                 Console.WriteLine("Empate");
             if ((int)Carta.Valores.Tres > (int)mazo.Cartas[4].Valor)
                 Console.WriteLine("El siete de espadas es mayor que un 3");*/
-
+            //crea un nuevo juego
             Juego juego = new Juego();
+            //agrega a los jugadores
             juego.add_player(new Jugador("Ricardo"));
             juego.add_player(new Jugador("Carlitos"));
-            juego.Mazo.Barajar();
+            //baraja el mazo
+            juego.baraja_mazo(juego.Jugadores[0]);
+            //vira una carta
             juego.da_la_vira();
-            juego.reparte_cartas();
-            for (int i = 1; i < 4; i++)
+            while (true)
             {
-                Console.WriteLine($"Jugando mano {i}");
-                juego.jugar_mano();
+                juego.reparte_cartas();
+                for (int i = 1; i < 4; i++)
+                {
+                    Console.WriteLine($"Jugando mano {i}");
+                    juego.jugar_mano();
+                }
+                if (juego.check_ganador())
+                    break;
+                Jugador siguiente_barajador = juego.Jugadores.First(p => p != juego.ultimo_barajador);
+                juego.baraja_mazo(siguiente_barajador);
+                juego.da_la_vira();
             }
             Console.ReadKey();
-
 
         }
     }
