@@ -16,8 +16,8 @@ namespace Trucazo_Console
             manos_ganadas = new Dictionary<Jugador, int>();
         }
         public Jugador Jugador_actual { get; set; }
-        public Mazo Mazo { get; set; }
         public List<Jugador> Jugadores { get; set; }
+        public Mazo Mazo { get; set; }
         public Carta Vira { get; set; }
         public Dictionary<Jugador, int> Puntaje { get; set; }
         public Jugador ultimo_barajador { get; set; }
@@ -55,6 +55,17 @@ namespace Trucazo_Console
             ultimo_barajador = barajador;
             Jugador_actual = barajador;
         }
+        public void reset_mazo()
+        {
+            Mazo = new Mazo();
+            baraja_mazo(ultimo_barajador);
+            da_la_vira();
+            foreach (Jugador jugador in Jugadores)
+            {
+                jugador.Mano.Clear();
+                jugador.Mano_original.Clear();
+            }
+        }
         public void jugar_ronda()
         {
             //Play a round consisting of 3 hands
@@ -75,6 +86,7 @@ namespace Trucazo_Console
             {
                 manos_ganadas[jugador] = 0;
             }
+            reset_mazo();
             if (check_ganador())
             {
                 Jugador ganador = Jugadores.First(p => Puntaje[p] >= 12);
