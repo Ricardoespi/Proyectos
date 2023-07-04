@@ -18,7 +18,8 @@ namespace Trucazo_Console
 
         public Pintas Pinta { get; set; }
         public Valores Valor { get; set; }
-         
+        public Valores_envido Valor_envido { get; set; }
+
         public enum Pintas
         {
             [Description(" de Espada")]
@@ -43,6 +44,19 @@ namespace Trucazo_Console
             Dos = 9,
             Tres = 10
         }
+        public enum Valores_envido
+        {
+            Diez = 0,
+            Once = 0,
+            Doce = 0,
+            Uno = 1,
+            Dos = 2,
+            Tres = 3,
+            Cuatro = 4,
+            Cinco = 5,
+            Seis = 6,
+            Siete = 7,
+        }
         public override string ToString()
         {
             if (((int)this.Valor) == 11)
@@ -53,6 +67,10 @@ namespace Trucazo_Console
                 return "Bastillo";
             if ((int)this.Valor == 14)
                 return "Espadilla";
+            if ((int)this.Valor == 15)
+                return "Perica";
+            if ((int)this.Valor == 16)
+                return "Perico";
             return (this.Valor) + GetEnumDescription(this.Pinta);
         }
         public static string GetEnumDescription(Enum enumVal)

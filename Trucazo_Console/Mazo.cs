@@ -28,7 +28,6 @@ namespace Trucazo_Console
                         Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Tres + 4));
                     else
                         Cartas.Add(new Carta(suit, valor));
-
                 }
             }
         }

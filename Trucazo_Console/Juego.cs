@@ -4,13 +4,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static Trucazo_Console.Carta;
 
 namespace Trucazo_Console
 {
     public class Juego
     {
-        public Juego() 
-        { 
+        public Juego()
+        {
             Mazo = new Mazo();
             Jugadores = new List<Jugador>();
             Puntaje = new Dictionary<Jugador, int>();
@@ -37,7 +38,7 @@ namespace Trucazo_Console
                 foreach (Jugador jugador in Jugadores)
                 {
                     Carta carta = Mazo.dar_carta();
-                    if(carta != null)
+                    if (carta != null)
                     {
                         jugador.Mano.Add(carta);
                         jugador.Mano_original.Add(carta);
@@ -75,7 +76,7 @@ namespace Trucazo_Console
                 Console.WriteLine($"Mano {i}");
                 Jugador ganador = jugar_mano();
                 // Check if a player has won 2 hands and won the round
-                if(ganador != null && manos_ganadas[ganador] >= 2)
+                if (ganador != null && manos_ganadas[ganador] >= 2)
                 {
                     Console.WriteLine($"{ganador.Nombre} ha ganado la ronda!");
                     actualizar_puntaje(ganador);
@@ -89,7 +90,7 @@ namespace Trucazo_Console
                     i++;
                 }
                 //Check if there was a tie in the third hand.
-                if(i == 3 && ganador == null)
+                if (i == 3 && ganador == null)
                 {
                     //Retroceder a la segunda mano para ver que carta es mayor.
 
@@ -100,13 +101,14 @@ namespace Trucazo_Console
             {
                 manos_ganadas[jugador] = 0;
             }
-            
+
             if (check_ganador())
             {
                 Jugador ganador = Jugadores.First(p => Puntaje[p] >= 12);
                 Console.WriteLine($"{ganador.Nombre} ha ganado el juego!");
                 return;
             }
+            jugar_envido();
         }
         public Jugador jugar_mano()
         {
@@ -166,7 +168,7 @@ namespace Trucazo_Console
 
             // The winner plays first in the next hand
             Jugador_actual = ganador;*/
-            
+
         }
         private void actualizar_puntaje(Jugador ganador)
         {
@@ -187,33 +189,39 @@ namespace Trucazo_Console
             List<Carta> cartas_ganadoras = new List<Carta>();
             Carta Perico = null;
             Carta Perica = null;
-            if(Vira.Valor == Carta.Valores.Diez)
+            if (Vira.Valor == Carta.Valores.Diez)
             {
-                Perico = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Once && c.Pinta == Vira.Pinta );
-                Perica = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Doce && c.Pinta == Vira.Pinta );
+                Perico = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Once && c.Pinta == Vira.Pinta);
+                Perica = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Doce && c.Pinta == Vira.Pinta);
             }
-            else if(Vira.Valor == Carta.Valores.Once)
+            else if (Vira.Valor == Carta.Valores.Once)
             {
                 Perico = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Doce && c.Pinta == Vira.Pinta);
-                Perica = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Diez && c.Pinta == Vira.Pinta );
+                Perica = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Diez && c.Pinta == Vira.Pinta);
             }
             else
             {
                 Perico = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Once && c.Pinta == Vira.Pinta);
                 Perica = cartas_jugadas.FirstOrDefault(c => c.Valor == Carta.Valores.Diez && c.Pinta == Vira.Pinta);
             }
-            
+
             if (Perico != null)
+            {
                 cartas_ganadoras.Add(Perico);
+                Perico.Valor = (Valores)16;
+            }
             else if (Perica != null)
+            {
                 cartas_ganadoras.Add(Perica);
+                Perica.Valor = (Valores)15;
+            }
             else
             {
                 // If no Perico or Perica cards were played, determine winner based on highest value
                 var mayor_valor = cartas_jugadas.Max(c => c.Valor);
                 foreach (Carta carta in cartas_jugadas)
                 {
-                    if(carta.Valor == mayor_valor)
+                    if (carta.Valor == mayor_valor)
                         cartas_ganadoras.Add(carta);
                 }
             }
@@ -221,6 +229,65 @@ namespace Trucazo_Console
             //Carta carta_ganadora = cartas_jugadas.OrderByDescending(c => c.Valor).First();
             //return carta_ganadora;
         }
+        public void jugar_envido()
+        {
+            Console.WriteLine("Jugando envido");
+            Dictionary<Jugador, int> puntaje_envido = new Dictionary<Jugador, int>();
+            foreach (Jugador jugador in Jugadores)
+            {
+                puntaje_envido[jugador] = calcular_puntaje_envido(jugador);
+                Console.WriteLine($"El envido de {jugador.Nombre} es {puntaje_envido[jugador]}");
+            }
+            Jugador ganador = puntaje_envido.OrderByDescending(j => j.Value).First().Key;
+            Console.WriteLine($"{ganador.Nombre} gano el envido");
+            actualizar_puntaje(ganador);
+        }
 
+        private int calcular_puntaje_envido(Jugador jugador)
+        {
+            List<Carta> cartas_pintas_iguales= jugador.Mano_original.GroupBy(c => c.Pinta).OrderByDescending(g => g.Count()).First().ToList();
+            if(cartas_pintas_iguales.Count == 2)
+            {
+                return cartas_pintas_iguales.Sum(c => (int)obtener_valor_envido(c.Valor) + 20);
+            }
+            else
+            {
+                return cartas_pintas_iguales.Max(c => (int)obtener_valor_envido(c.Valor));
+            }
+        }
+        //Este metodo de obtener_valor_envido no es nada necesario. Podria hacer uso de algo llamado Flags para los enums. Tenerlo en cuenta al crear app mas completa.
+        //O tambien podria asignarle valor_envido en cada carta al momento de instanciar el mazo.
+        private Valores_envido obtener_valor_envido(Carta.Valores valor)
+        {
+            switch (valor)
+            {
+                case Valores.Diez:
+                    return Valores_envido.Diez;
+                case Valores.Once:
+                    return Valores_envido.Once;
+                case Valores.Doce:
+                    return Valores_envido.Doce;
+                case Valores.Uno:
+                    return Valores_envido.Uno;
+                case Valores.Dos:
+                    return Valores_envido.Dos;
+                case Valores.Tres:
+                    return Valores_envido.Tres;
+                case Valores.Cuatro:
+                    return Valores_envido.Cuatro;
+                case Valores.Cinco:
+                    return Valores_envido.Cinco;
+                case Valores.Seis:
+                    return Valores_envido.Seis;
+                case Valores.Siete:
+                    return Valores_envido.Siete;
+                case (Valores)15:
+                    return Valores_envido.Siete + 2;
+                case (Valores)16:
+                    return Valores_envido.Siete + 3;
+                default:
+                    throw new ArgumentException("Invalid card value for Envido");
+            }
+        }
     }
 }

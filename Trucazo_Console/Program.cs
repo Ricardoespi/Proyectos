@@ -57,6 +57,10 @@ namespace Trucazo_Console
             while (true)
             {
                 juego.reparte_cartas();
+                foreach (Jugador jugador in juego.Jugadores)
+                {
+                    jugador.Mano_original = new List<Carta>(jugador.Mano);
+                }
                 juego.jugar_ronda();
                 if (juego.check_ganador())
                     break;
