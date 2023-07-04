@@ -41,7 +41,6 @@ namespace Trucazo_Console
                     if (carta != null)
                     {
                         jugador.Mano.Add(carta);
-                        jugador.Mano_original.Add(carta);
                     }
                 }
             }
@@ -139,14 +138,14 @@ namespace Trucazo_Console
                 //The current player plays first in the next hand
                 Jugador_actual = ganador;
                 manos_ganadas[ganador]++;
-                foreach (Jugador jugador in Jugadores)
-                {
-                    foreach (Carta carta in cartas_jugadas)
-                    {
-                        if (jugador.Mano_original.Contains(carta))
-                            jugador.Mano_original.Remove(carta);
-                    }
-                }
+                //foreach (Jugador jugador in Jugadores)
+                //{
+                //    foreach (Carta carta in cartas_jugadas)
+                //    {
+                //        if (jugador.Mano_original.Contains(carta))
+                //            jugador.Mano_original.Remove(carta);
+                //    }
+                //}
                 return ganador;
             }
             else
@@ -248,11 +247,11 @@ namespace Trucazo_Console
             List<Carta> cartas_pintas_iguales= jugador.Mano_original.GroupBy(c => c.Pinta).OrderByDescending(g => g.Count()).First().ToList();
             if(cartas_pintas_iguales.Count == 2)
             {
-                return cartas_pintas_iguales.Sum(c => (int)obtener_valor_envido(c.Valor) + 20);
+                return cartas_pintas_iguales.Sum(c => (int)obtener_valor_envido(c.Valor)) + 20;
             }
             else
             {
-                return cartas_pintas_iguales.Max(c => (int)obtener_valor_envido(c.Valor));
+                return cartas_pintas_iguales.Max(c => (int)obtener_valor_envido(c.Valor)); 
             }
         }
         //Este metodo de obtener_valor_envido no es nada necesario. Podria hacer uso de algo llamado Flags para los enums. Tenerlo en cuenta al crear app mas completa.
@@ -281,6 +280,14 @@ namespace Trucazo_Console
                     return Valores_envido.Seis;
                 case Valores.Siete:
                     return Valores_envido.Siete;
+                case (Valores)11:
+                    return Valores_envido.Siete;
+                case (Valores)12:
+                    return Valores_envido.Siete;
+                case (Valores)13:
+                    return Valores_envido.Uno;
+                case (Valores)14:
+                    return Valores_envido.Uno;
                 case (Valores)15:
                     return Valores_envido.Siete + 2;
                 case (Valores)16:
