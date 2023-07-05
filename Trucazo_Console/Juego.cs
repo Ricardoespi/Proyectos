@@ -39,9 +39,7 @@ namespace Trucazo_Console
                 {
                     Carta carta = Mazo.dar_carta();
                     if (carta != null)
-                    {
                         jugador.Mano.Add(carta);
-                    }
                 }
             }
         }
@@ -101,7 +99,6 @@ namespace Trucazo_Console
                 if (i == 3 && ganador == null)
                 {
                     //Retroceder a la segunda mano para ver que carta es mayor.
-
                 }
             }
             // Reset the number of hands won by each player
@@ -211,19 +208,25 @@ namespace Trucazo_Console
                 }
             }
             return cartas_ganadoras;
-            //Carta carta_ganadora = cartas_jugadas.OrderByDescending(c => c.Valor).First();
-            //return carta_ganadora;
         }
         public void jugar_envido()
         {
             Console.WriteLine("Jugando envido");
+            Jugador ganador = null;
             Dictionary<Jugador, int> puntaje_envido = new Dictionary<Jugador, int>();
             foreach (Jugador jugador in Jugadores)
             {
                 puntaje_envido[jugador] = calcular_puntaje_envido(jugador);
                 Console.WriteLine($"El envido de {jugador.Nombre} es {puntaje_envido[jugador]}");
             }
-            Jugador ganador = puntaje_envido.OrderByDescending(j => j.Value).First().Key;
+            if (puntaje_envido[Jugadores[0]] == puntaje_envido[Jugadores[1]])
+            {
+                ganador = Jugadores.Where(j => j != Jugador_actual).First();
+            }
+            else
+            {
+                ganador = puntaje_envido.OrderByDescending(j => j.Value).First().Key;
+            }
             Console.WriteLine($"{ganador.Nombre} gano el envido");
             actualizar_puntaje(ganador);
         }
