@@ -69,16 +69,25 @@ namespace Trucazo_Console
         }
         public void jugar_ronda()
         {
+            Jugador ganador_primera_mano;
             //Play a round consisting of 3 hands
             for (int i = 1; i < 4; i++)
             {
+                ganador_primera_mano = null;
                 Console.WriteLine($"Mano {i}");
                 Jugador ganador = jugar_mano();
+                if (i == 1 && ganador != null)
+                    ganador_primera_mano = ganador;
                 // Check if a player has won 2 hands and won the round
                 if (ganador != null && manos_ganadas[ganador] >= 2)
                 {
                     Console.WriteLine($"{ganador.Nombre} ha ganado la ronda!");
                     actualizar_puntaje(ganador);
+                    break;
+                }else if(i > 1 && ganador == null && ganador_primera_mano != null)
+                {
+                    Console.WriteLine($"{ganador_primera_mano.Nombre} ha ganado la ronda!");
+                    actualizar_puntaje(ganador_primera_mano);
                     break;
                 }
                 // Check if there was a tie in the first hand
@@ -138,14 +147,6 @@ namespace Trucazo_Console
                 //The current player plays first in the next hand
                 Jugador_actual = ganador;
                 manos_ganadas[ganador]++;
-                //foreach (Jugador jugador in Jugadores)
-                //{
-                //    foreach (Carta carta in cartas_jugadas)
-                //    {
-                //        if (jugador.Mano_original.Contains(carta))
-                //            jugador.Mano_original.Remove(carta);
-                //    }
-                //}
                 return ganador;
             }
             else
@@ -153,21 +154,6 @@ namespace Trucazo_Console
                 Console.WriteLine("Es un empate");
                 return null;
             }
-            /*Carta carta_ganadora = determinar_ganador(cartas_jugadas);
-            Jugador ganador = null;
-            foreach (Jugador jugador in Jugadores)
-            {
-                if (jugador.Mano_original.Contains(carta_ganadora))
-                {
-                    ganador = jugador;
-                }
-            }
-            //Jugador ganador = Jugadores.First(p => p.Mano.Contains(carta_ganadora));
-            Console.WriteLine($"{ganador.Nombre} gano la mano con {carta_ganadora.ToString()}");
-
-            // The winner plays first in the next hand
-            Jugador_actual = ganador;*/
-
         }
         private void actualizar_puntaje(Jugador ganador)
         {
@@ -244,14 +230,28 @@ namespace Trucazo_Console
 
         private int calcular_puntaje_envido(Jugador jugador)
         {
-            List<Carta> cartas_pintas_iguales= jugador.Mano_original.GroupBy(c => c.Pinta).OrderByDescending(g => g.Count()).First().ToList();
-            if(cartas_pintas_iguales.Count == 2)
+            Carta Perico = jugador.Mano_original.FirstOrDefault(c => c.Valor == (Valores)16 && c.Pinta == Vira.Pinta);
+            Carta Perica = jugador.Mano_original.FirstOrDefault(c => c.Valor == (Valores)15 && c.Pinta == Vira.Pinta);
+            if(Perico != null)
             {
-                return cartas_pintas_iguales.Sum(c => (int)obtener_valor_envido(c.Valor)) + 20;
+                int max_puntaje_envido = jugador.Mano_original.Where(c => c != Perico).Max(c => (int)obtener_valor_envido(c.Valor)) + 20 + (int)obtener_valor_envido(Perico.Valor);
+                return max_puntaje_envido;
+            }
+            else if(Perica != null)
+            {
+                return jugador.Mano_original.Where(c => c != Perica).Max(c => (int)obtener_valor_envido(c.Valor)) + 20 + (int)obtener_valor_envido(Perica.Valor);
             }
             else
             {
-                return cartas_pintas_iguales.Max(c => (int)obtener_valor_envido(c.Valor)); 
+                List<Carta> cartas_pintas_iguales= jugador.Mano_original.GroupBy(c => c.Pinta).OrderByDescending(g => g.Count()).First().ToList();
+                if(cartas_pintas_iguales.Count == 2)
+                {
+                    return cartas_pintas_iguales.Sum(c => (int)obtener_valor_envido(c.Valor)) + 20;
+                }
+                else
+                {
+                    return cartas_pintas_iguales.Max(c => (int)obtener_valor_envido(c.Valor)); 
+                }
             }
         }
         //Este metodo de obtener_valor_envido no es nada necesario. Podria hacer uso de algo llamado Flags para los enums. Tenerlo en cuenta al crear app mas completa.
