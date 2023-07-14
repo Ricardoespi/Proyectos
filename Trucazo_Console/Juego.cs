@@ -235,14 +235,17 @@ namespace Trucazo_Console
         {
             Carta Perico = jugador.Mano_original.FirstOrDefault(c => c.Valor == (Valores)16 && c.Pinta == Vira.Pinta);
             Carta Perica = jugador.Mano_original.FirstOrDefault(c => c.Valor == (Valores)15 && c.Pinta == Vira.Pinta);
-            if(Perico != null)
+            if (Perico != null)
             {
-                int max_puntaje_envido = jugador.Mano_original.Where(c => c != Perico).Max(c => (int)obtener_valor_envido(c.Valor)) + 20 + (int)obtener_valor_envido(Perico.Valor);
+                Perico.Valor_envido = Valores_envido.Perico;
+                int max_puntaje_envido = jugador.Mano_original.Where(c => c != Perico).Max(c => (int)c.Valor_envido) + 20 + (int)Perico.Valor_envido;     
                 return max_puntaje_envido;
             }
             else if(Perica != null)
             {
-                return jugador.Mano_original.Where(c => c != Perica).Max(c => (int)obtener_valor_envido(c.Valor)) + 20 + (int)obtener_valor_envido(Perica.Valor);
+                Perica.Valor_envido = Valores_envido.Perica;
+                int max_puntaje_envido = jugador.Mano_original.Where(c => c != Perica).Max(c => (int)c.Valor_envido) + 20 + (int)Perica.Valor_envido;
+                return max_puntaje_envido;
             }
             else
             {
@@ -253,7 +256,8 @@ namespace Trucazo_Console
                 }
                 else
                 {
-                    return cartas_pintas_iguales.Max(c => (int)obtener_valor_envido(c.Valor)); 
+                    return (int)jugador.Mano_original.Max(c => c.Valor_envido);
+                    //return (int)cartas_pintas_iguales.Max(c => c.Valor_envido);
                 }
             }
         }

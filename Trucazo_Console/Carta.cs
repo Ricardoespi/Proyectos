@@ -10,10 +10,11 @@ namespace Trucazo_Console
 {
     public class Carta
     {
-        public Carta(Pintas pinta, Valores valor)
+        public Carta(Pintas pinta, Valores valor, Valores_envido valor_envido)
         {
             this.Pinta = pinta;
             this.Valor = valor;
+            this.Valor_envido = valor_envido;
         }
 
         public Pintas Pinta { get; set; }
@@ -42,7 +43,13 @@ namespace Trucazo_Console
             Doce = 7,
             Uno = 8,
             Dos = 9,
-            Tres = 10
+            Tres = 10,
+            Siete_de_Oro = 11,
+            Siete_de_Espada = 12,
+            Bastillo = 13,
+            Espadilla = 14,
+            Perica = 15,
+            Perico = 16
         }
         public enum Valores_envido
         {
@@ -56,6 +63,8 @@ namespace Trucazo_Console
             Cinco = 5,
             Seis = 6,
             Siete = 7,
+            Perica = 9,
+            Perico = 10
         }
         public override string ToString()
         {

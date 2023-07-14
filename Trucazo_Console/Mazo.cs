@@ -13,22 +13,48 @@ namespace Trucazo_Console
         public Mazo()
         {
             Cartas = new List<Carta>();
-
-            foreach (Carta.Pintas suit in Enum.GetValues(typeof(Carta.Pintas)))
             {
-                foreach (Carta.Valores valor in Enum.GetValues(typeof(Carta.Valores)))
-                {
-                    if (valor == Carta.Valores.Siete && suit == Carta.Pintas.Oro)
-                        Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Tres + 1));
-                    else if (valor == Carta.Valores.Siete && suit == Carta.Pintas.Espada)
-                        Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Tres + 2));
-                    else if (valor == Carta.Valores.Uno && suit == Carta.Pintas.Basto)
-                        Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Tres + 3));
-                    else if (valor == Carta.Valores.Uno && suit == Carta.Pintas.Espada)
-                        Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Tres + 4));
-                    else
-                        Cartas.Add(new Carta(suit, valor));
-                }
+                Cartas = new List<Carta>();
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Espadilla, Carta.Valores_envido.Uno));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Dos, Carta.Valores_envido.Dos));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Tres, Carta.Valores_envido.Tres));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Cuatro, Carta.Valores_envido.Cuatro));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Cinco, Carta.Valores_envido.Cinco));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Seis, Carta.Valores_envido.Seis));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Siete_de_Espada, Carta.Valores_envido.Siete));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Diez, Carta.Valores_envido.Diez));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Once, Carta.Valores_envido.Once));
+                Cartas.Add(new Carta(Carta.Pintas.Espada, Carta.Valores.Doce, Carta.Valores_envido.Doce));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Bastillo, Carta.Valores_envido.Uno));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Dos, Carta.Valores_envido.Dos));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Tres, Carta.Valores_envido.Tres));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Cuatro, Carta.Valores_envido.Cuatro));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Cinco, Carta.Valores_envido.Cinco));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Seis, Carta.Valores_envido.Seis));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Siete, Carta.Valores_envido.Siete));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Diez, Carta.Valores_envido.Diez));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Once, Carta.Valores_envido.Once));
+                Cartas.Add(new Carta(Carta.Pintas.Basto, Carta.Valores.Doce, Carta.Valores_envido.Doce));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Uno, Carta.Valores_envido.Uno));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Dos, Carta.Valores_envido.Dos));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Tres, Carta.Valores_envido.Tres));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Cuatro, Carta.Valores_envido.Cuatro));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Cinco, Carta.Valores_envido.Cinco));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Seis, Carta.Valores_envido.Seis));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Siete_de_Oro, Carta.Valores_envido.Siete));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Diez, Carta.Valores_envido.Diez));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Once, Carta.Valores_envido.Once));
+                Cartas.Add(new Carta(Carta.Pintas.Oro, Carta.Valores.Doce, Carta.Valores_envido.Doce));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Uno, Carta.Valores_envido.Uno));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Dos, Carta.Valores_envido.Dos));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Tres, Carta.Valores_envido.Tres));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Cuatro, Carta.Valores_envido.Cuatro));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Cinco, Carta.Valores_envido.Cinco));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Seis, Carta.Valores_envido.Seis));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Siete, Carta.Valores_envido.Siete));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Diez, Carta.Valores_envido.Diez));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Once, Carta.Valores_envido.Once));
+                Cartas.Add(new Carta(Carta.Pintas.Copa, Carta.Valores.Doce, Carta.Valores_envido.Doce));
             }
         }
         public void Barajar()
