@@ -40,13 +40,14 @@ namespace Trucazo_Console
                     Carta carta = Mazo.dar_carta();
                     if (carta != null)
                         jugador.Mano.Add(carta);
+                    jugador.Mano = determinar_perico(jugador.Mano);
                 }
             }
         }
         public void da_la_vira()
         {
             Vira = Mazo.dar_carta();
-            Console.WriteLine($"La vira es {Vira.ToString()}");
+            Console.WriteLine($"La vira es {Vira.ToString()}"); 
         }
         public void baraja_mazo(Jugador barajador)
         {
@@ -126,6 +127,7 @@ namespace Trucazo_Console
             // Each player selects a card to play
             foreach (Jugador jugador in jugadores_orden)
             {
+                jugador.Mano = determinar_perico(jugador.Mano);
                 Console.WriteLine(@"Que carta de tu mano quieres jugar {0}?", jugador.Nombre);
                 int n = int.Parse(Console.ReadLine());
                 Carta carta_jugada = jugador.seleccionar_carta(n);
@@ -165,10 +167,8 @@ namespace Trucazo_Console
             }
             return false;
         }
-        private List<Carta> determinar_ganadoras(List<Carta> cartas_jugadas)
+        public List<Carta> determinar_perico(List<Carta> cartas_jugadas)
         {
-            // Determine the winner of a hand based on the highest card value
-            List<Carta> cartas_ganadoras = new List<Carta>();
             Carta Perico = null;
             Carta Perica = null;
             if (Vira.Valor == Carta.Valores.Diez)
@@ -189,24 +189,29 @@ namespace Trucazo_Console
 
             if (Perico != null)
             {
-                cartas_ganadoras.Add(Perico);
-                Perico.Valor = (Valores)16;
+                Perico.Valor = Valores.Perico;
+                Perico.Valor_envido = Valores_envido.Perico;
             }
             else if (Perica != null)
             {
-                cartas_ganadoras.Add(Perica);
-                Perica.Valor = (Valores)15;
+                Perica.Valor = Valores.Perica;
+                Perica.Valor_envido = Valores_envido.Perica;
             }
-            else
+            return cartas_jugadas;
+        }
+        private List<Carta> determinar_ganadoras(List<Carta> cartas_jugadas)
+        {
+            // Determine the winner of a hand based on the highest card value
+            List<Carta> cartas_ganadoras = new List<Carta>();
+            // If no Perico or Perica cards were played, determine winner based on highest value
+            cartas_jugadas = determinar_perico(cartas_jugadas);
+            var mayor_valor = cartas_jugadas.Max(c => c.Valor);
+            foreach (Carta carta in cartas_jugadas)
             {
-                // If no Perico or Perica cards were played, determine winner based on highest value
-                var mayor_valor = cartas_jugadas.Max(c => c.Valor);
-                foreach (Carta carta in cartas_jugadas)
-                {
-                    if (carta.Valor == mayor_valor)
-                        cartas_ganadoras.Add(carta);
-                }
+                if (carta.Valor == mayor_valor)
+                    cartas_ganadoras.Add(carta);
             }
+            
             return cartas_ganadoras;
         }
         public void jugar_envido()

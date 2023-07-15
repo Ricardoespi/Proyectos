@@ -15,8 +15,19 @@ namespace Trucazo_Console
             this.Pinta = pinta;
             this.Valor = valor;
             this.Valor_envido = valor_envido;
+            
+            if (((int)this.Valor) == 11)
+                this.nombre = "Siete de Oro";
+            else if ((int)this.Valor == 12)
+                this.nombre = "Siete de Espada";
+            else if ((int)this.Valor == 13)
+                this.nombre = "Bastillo";
+            else if ((int)this.Valor == 14)
+                this.nombre = "Espadilla";
+            else 
+                this.nombre = (this.Valor) + GetEnumDescription(this.Pinta);
         }
-
+        private string nombre;
         public Pintas Pinta { get; set; }
         public Valores Valor { get; set; }
         public Valores_envido Valor_envido { get; set; }
@@ -68,6 +79,10 @@ namespace Trucazo_Console
         }
         public override string ToString()
         {
+            return this.nombre;
+        }
+        /*public override string ToString()
+        {
             if (((int)this.Valor) == 11)
                 return "Siete de Oro";
             if ((int)this.Valor == 12)
@@ -76,12 +91,8 @@ namespace Trucazo_Console
                 return "Bastillo";
             if ((int)this.Valor == 14)
                 return "Espadilla";
-            if ((int)this.Valor == 15)
-                return "Perica";
-            if ((int)this.Valor == 16)
-                return "Perico";
             return (this.Valor) + GetEnumDescription(this.Pinta);
-        }
+        }*/
         public static string GetEnumDescription(Enum enumVal)
         {
             System.Reflection.MemberInfo[] memInfo = enumVal.GetType().GetMember(enumVal.ToString());
