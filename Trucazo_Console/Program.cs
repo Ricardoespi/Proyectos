@@ -18,10 +18,8 @@ namespace Trucazo_Console
             //agrega a los jugadores
             juego.add_player(new Jugador("Ricardo"));
             juego.add_player(new Jugador("Carlitos"));
-            //baraja el mazo
-            juego.baraja_mazo(juego.Jugadores[0]);
-            //vira una carta
-            juego.da_la_vira();
+            //baraja el mazo y vira
+            juego.reset_mazo(juego.Jugadores[0]);
             while (true)
             {
                 juego.reparte_cartas();
@@ -37,7 +35,7 @@ namespace Trucazo_Console
                         Console.WriteLine(carta);
                     }
                 }
-                juego.jugar_ronda();
+                juego.jugar_ronda(juego.Jugadores.First(p => p != juego.ultimo_barajador));
                 if (juego.check_ganador())
                     break;
                 Jugador siguiente_barajador = juego.Jugadores.First(p => p != juego.ultimo_barajador);
