@@ -113,7 +113,7 @@ namespace Trucazo_Console
                 Console.WriteLine($"{ganador.Nombre} ha ganado el juego!");
                 return;
             }
-            jugar_envido(mano);
+            jugar_flor_envido(mano);
         }
         
         public Jugador jugar_mano()
@@ -239,19 +239,48 @@ namespace Trucazo_Console
             Console.WriteLine(new string('*', 120 ) + "\n");
             actualizar_puntaje(ganador);
         }
-        public void flor_envido(Jugador mano)
+        public void jugar_flor_envido(Jugador mano)
         {
-            bool flor = false;
+            Dictionary<Jugador, int> puntaje_flor = new Dictionary<Jugador, int>();
             foreach (Jugador jugador in Jugadores)
             {
-                if (jugador.Mano_original.All(c => c.Pinta == jugador.Mano_original[0].Pinta))
+                if (jugador.Mano_original.All(carta => carta.Pinta == jugador.Mano_original[0].Pinta))
                 {
-                    Console.WriteLine($"{jugador.Nombre} tiene flor!");
-                    flor = true;
+                    int puntaje = jugador.Mano_original.Sum(carta => (int)carta.Valor_envido) + 20;
+                    puntaje_flor[jugador] = puntaje;
+                    Console.WriteLine($"{jugador.Nombre} tiene flor con un puntaje de {puntaje}!");
                 }
             }
-            if (!flor)
+            if (puntaje_flor.Count == 0)
+            {
                 jugar_envido(mano);
+            }
+            else if (puntaje_flor.Count == 1)
+            {
+                Jugador ganador = puntaje_flor.Keys.First();
+                Console.WriteLine($" \n {ganador.Nombre} gana 3 puntos por tener flor!");
+                Console.WriteLine(new string('*', 120) + "\n");
+                actualizar_puntaje(ganador, 3);
+            }
+            else
+            {
+                int max_puntaje = puntaje_flor.Values.Max();
+                List<Jugador> jugadores_empatados = puntaje_flor.Where(j => j.Value == max_puntaje).Select(j => j.Key).ToList();
+                if (jugadores_empatados.Count == 1)
+                {
+                    Jugador ganador = jugadores_empatados[0];
+                    Console.WriteLine($" \n {ganador.Nombre} gana el enfrentamiento de flor!");
+                    Console.WriteLine(new string('*', 120) + "\n");
+                    actualizar_puntaje(ganador, 5);
+                }
+                else
+                { 
+                    Jugador ganador = mano;
+                    Console.WriteLine($"\n {ganador.Nombre} gana el enfrentamiento de flor por ser mano!");
+                    Console.WriteLine(new string('*', 120) + "\n");
+                    actualizar_puntaje(ganador, 5);
+                }
+            }
         }
         private int calcular_puntaje_envido(Jugador jugador)
         {
