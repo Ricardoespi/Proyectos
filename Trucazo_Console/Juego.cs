@@ -18,7 +18,6 @@ namespace Trucazo_Console
             manos_ganadas = new Dictionary<Jugador, int>();
         }
         public Jugador Jugador_actual { get; set; }
-        public Jugador Jugador_mano { get; set; }
         public List<Jugador> Jugadores { get; set; }
         public Mazo Mazo { get; set; }
         public Carta Vira { get; set; }
@@ -123,7 +122,6 @@ namespace Trucazo_Console
             List<Carta> cartas_jugadas = new List<Carta>();
             // Determine the order of play
             int indice_jugador_actual = Jugadores.IndexOf(Jugador_actual);
-            Jugador_mano = Jugador_actual;
             IEnumerable<Jugador> jugadores_orden = Jugadores.Skip(indice_jugador_actual).Concat(Jugadores.Take(indice_jugador_actual));
             // Each player selects a card to play
             foreach (Jugador jugador in jugadores_orden)
@@ -237,7 +235,20 @@ namespace Trucazo_Console
             Console.WriteLine(new string('*', 120 ) + "\n");
             actualizar_puntaje(ganador);
         }
-
+        public void flor_envido(Jugador mano)
+        {
+            bool flor = false;
+            foreach (Jugador jugador in Jugadores)
+            {
+                if (jugador.Mano_original.All(c => c.Pinta == jugador.Mano_original[0].Pinta))
+                {
+                    Console.WriteLine($"{jugador.Nombre} tiene flor!");
+                    flor = true;
+                }
+            }
+            if (!flor)
+                jugar_envido(mano);
+        }
         private int calcular_puntaje_envido(Jugador jugador)
         {
             Carta Perico = jugador.Mano_original.FirstOrDefault(c => c.Valor == (Valores)16 && c.Pinta == Vira.Pinta);
