@@ -157,6 +157,10 @@ namespace Trucazo_Console
         {
             Puntaje[ganador]++;
         }
+        private void actualizar_puntaje(Jugador ganador, int puntos)
+        {
+            Puntaje[ganador] += puntos;
+        }
         public bool check_ganador()
         {
             foreach (Jugador jugador in Jugadores)

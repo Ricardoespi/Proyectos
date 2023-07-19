@@ -18,6 +18,7 @@ namespace Trucazo_Console
         public string Nombre { get; set; }
         public List<Carta> Mano { get; set; }
         public List<Carta> Mano_original { get; set; }
+        public int Puntaje_flor { get; set; }         
         public Carta seleccionar_carta()
         {
             Carta carta_seleccionada = Mano.First();
