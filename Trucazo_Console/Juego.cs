@@ -244,8 +244,24 @@ namespace Trucazo_Console
             Dictionary<Jugador, int> puntaje_flor = new Dictionary<Jugador, int>();
             foreach (Jugador jugador in Jugadores)
             {
-                if (jugador.Mano_original.All(carta => carta.Pinta == jugador.Mano_original[0].Pinta))
+                Carta Perico = jugador.Mano_original.FirstOrDefault(c => c.Valor == Valores.Perico && c.Pinta == Vira.Pinta);
+                Carta Perica = jugador.Mano_original.FirstOrDefault(c => c.Valor == Valores.Perica && c.Pinta == Vira.Pinta);
+                if (Perico != null || Perica != null)
                 {
+                    // The player has a Perico or Perica
+                    Carta carta_joker = Perico ?? Perica;
+                    List<Carta> cartas_pintas_iguales = jugador.Mano_original.Where(c => c != carta_joker).GroupBy(c => c.Pinta).OrderByDescending(g => g.Count()).First().ToList();
+                    if (cartas_pintas_iguales.Count >= 2)
+                    {
+                        // The player has a flor with the Perico or Perica
+                        int puntaje = cartas_pintas_iguales.Sum(carta => (int)carta.Valor_envido) + 20 + (int)carta_joker.Valor_envido;
+                        puntaje_flor[jugador] = puntaje;
+                        Console.WriteLine($"{jugador.Nombre} tiene flor con un puntaje de {puntaje}!");
+                    }
+                }
+                else if (jugador.Mano_original.All(carta => carta.Pinta == jugador.Mano_original[0].Pinta))
+                {
+                    // The player has a regular flor
                     int puntaje = jugador.Mano_original.Sum(carta => (int)carta.Valor_envido) + 20;
                     puntaje_flor[jugador] = puntaje;
                     Console.WriteLine($"{jugador.Nombre} tiene flor con un puntaje de {puntaje}!");
@@ -260,7 +276,7 @@ namespace Trucazo_Console
                 Jugador ganador = puntaje_flor.Keys.First();
                 Console.WriteLine($" \n {ganador.Nombre} gana 3 puntos por tener flor!");
                 Console.WriteLine(new string('*', 120) + "\n");
-                actualizar_puntaje(ganador, 3);
+                 actualizar_puntaje(ganador, 3);
             }
             else
             {
@@ -269,15 +285,14 @@ namespace Trucazo_Console
                 if (jugadores_empatados.Count == 1)
                 {
                     Jugador ganador = jugadores_empatados[0];
-                    Console.WriteLine($" \n {ganador.Nombre} gana el enfrentamiento de flor!");
-                    Console.WriteLine(new string('*', 120) + "\n");
+                    Console.WriteLine($"{ganador.Nombre} gana el enfrentamiento de flor!");
                     actualizar_puntaje(ganador, 5);
                 }
                 else
-                { 
+                {
+                    // Determine the order of play
                     Jugador ganador = mano;
-                    Console.WriteLine($"\n {ganador.Nombre} gana el enfrentamiento de flor por ser mano!");
-                    Console.WriteLine(new string('*', 120) + "\n");
+                    Console.WriteLine($"{ganador.Nombre} gana el enfrentamiento de flor por ser mano!");
                     actualizar_puntaje(ganador, 5);
                 }
             }
