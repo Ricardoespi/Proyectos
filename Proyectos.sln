@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocioLily", "negocioLily\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trucazo_Console", "Trucazo_Console\Trucazo_Console.csproj", "{8D364551-5582-47B7-AD6F-FE47EC9198D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventarioNegocioPrueba", "InventarioNegocioPrueba\InventarioNegocioPrueba.csproj", "{9BB48E89-E7E7-4E18-AC63-AF910A997EB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{8D364551-5582-47B7-AD6F-FE47EC9198D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D364551-5582-47B7-AD6F-FE47EC9198D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D364551-5582-47B7-AD6F-FE47EC9198D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB48E89-E7E7-4E18-AC63-AF910A997EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB48E89-E7E7-4E18-AC63-AF910A997EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB48E89-E7E7-4E18-AC63-AF910A997EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB48E89-E7E7-4E18-AC63-AF910A997EB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
